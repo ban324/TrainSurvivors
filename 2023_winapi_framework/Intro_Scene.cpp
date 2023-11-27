@@ -6,9 +6,9 @@
 #include "SceneMgr.h"
 void Intro_Scene::Init()
 {
-	HDC mainDC = Core::GetInst()->GetMainDC();
-	TextOut(mainDC, 500, 100, L"TrainSurvivors", 14);
-	TextOut(mainDC, 500, 100, L"Press Enter", 11);
+	//폰트 세팅
+	ResMgr::GetInst()->LoadFont(L"TitleFont", L"Font\\MainFont.ttf", 60);
+	ResMgr::GetInst()->LoadFont(L"SubFont", L"Font\\MainFont.ttf", 20);
 
 	// 사운드 세팅
 	/*ResMgr::GetInst()->LoadSound(L"BGM", L"Sound\\Retro_bgm.wav", true);
@@ -30,6 +30,12 @@ void Intro_Scene::Update()
 void Intro_Scene::Render(HDC _dc)
 {
 	Scene::Render(_dc);
+
+	SetTextAlign(_dc, TA_CENTER);
+	SelectObject(_dc, ResMgr::GetInst()->GetFont(L"TitleFont"));
+	TextOut(_dc, 600, 200, L"TrainSurvivors", 14);
+	SelectObject(_dc, ResMgr::GetInst()->GetFont(L"SubFont"));
+	TextOut(_dc, 600, 300, L"Press Enter", 11);
 }
 
 void Intro_Scene::Release()

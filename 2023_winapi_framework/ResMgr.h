@@ -33,5 +33,11 @@ public:
 	void Pause(SOUND_CHANNEL _eChannel, bool _Ispause);
 private:
 	tSoundInfo* FindSound(const wstring& _strKey);
+private:
+	map<wstring, HFONT> m_mapFont;
+public:
+	void LoadFont(const wstring& _strKey, const wstring& _strReleativePath, int fontSize);
+	bool FindFont(const wstring& _strKey);
+	HFONT GetFont(const wstring& _strKey);
 };
 
