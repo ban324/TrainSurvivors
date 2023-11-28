@@ -33,9 +33,9 @@ void Intro_Scene::Render(HDC _dc)
 
 	SetTextAlign(_dc, TA_CENTER);
 	SelectObject(_dc, ResMgr::GetInst()->GetFont(L"TitleFont"));
-	TextOut(_dc, 600, 200, L"TrainSurvivors", 14);
+	TextOut(_dc, 750, 200, L"TrainSurvivors", 14);
 	SelectObject(_dc, ResMgr::GetInst()->GetFont(L"SubFont"));
-	TextOut(_dc, 600, 300, L"Press Enter", 11);
+	TextOut(_dc, 750, 300, L"Press Enter", 11);
 }
 
 void Intro_Scene::Release()
