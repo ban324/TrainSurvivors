@@ -4,3 +4,8 @@
 void Game_Scene::Init()
 {
 }
+
+void Game_Scene::Render(HDC _dc)
+{
+
+}

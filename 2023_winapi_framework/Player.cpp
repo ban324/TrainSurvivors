@@ -18,26 +18,18 @@ Player::Player()
 	//wstring strFilePath = PathMgr::GetInst()->GetResPath();
 	//strFilePath += L"Texture\\plane.bmp";
 	//m_pTex->Load(strFilePath);
-	//m_pTex = ResMgr::GetInst()->TexLoad(L"Player", L"Texture\\plane.bmp");
 	m_pTex = ResMgr::GetInst()->TexLoad(L"Player", L"Texture\\jiwoo.bmp");
+	m_pTex = ResMgr::GetInst()->TexLoad(L"P2", L"Texture\\trainright.bmp");
 	CreateCollider();
 	GetCollider()->SetScale(Vec2(20.f,30.f));
 	//GetCollider()->SetOffSetPos(Vec2(50.f,0.f));
-	
 	// 엉엉엉 내 20분 ㅠㅠㅠ ㅁ날어;ㅣ남러;ㅁ나얼
 	CreateAnimator();
-	GetAnimator()->CreateAnim(L"Jiwoo_Front", m_pTex,Vec2(0.f, 150.f),
-		Vec2(50.f, 50.f), Vec2(50.f, 0.f), 5, 0.2f);
-	GetAnimator()->CreateAnim(L"Jiwoo_Back", m_pTex, Vec2(0.f, 100.f),
-		Vec2(50.f, 50.f), Vec2(50.f, 0.f), 5, 0.2f);
-	GetAnimator()->CreateAnim(L"Jiwoo_Left", m_pTex, Vec2(0.f, 0.f),
-		Vec2(50.f, 50.f), Vec2(50.f, 0.f), 5, 0.2f);
-	GetAnimator()->CreateAnim(L"Jiwoo_Right", m_pTex, Vec2(0.f, 50.f),
-		Vec2(50.f, 50.f), Vec2(50.f, 0.f), 5, 0.2f);
-	GetAnimator()->CreateAnim(L"Jiwoo_Attack", m_pTex, Vec2(0.f, 200.f),
-		Vec2(50.f, 50.f), Vec2(50.f, 0.f), 5, 0.2f);
-	GetAnimator()->PlayAnim(L"Jiwoo_Front",true);
-
+	GetAnimator()->CreateAnim(L"Train_Right", m_pTex,Vec2(0.f, 0.f),
+		Vec2(64.f, 64.f), Vec2(64.f, 0.f), 8, 0.2f);
+	GetAnimator()->CreateAnim(L"Train_Left", m_pTex,Vec2(0.f, 0.f),
+		Vec2(64.f, 64.f), Vec2(64.f, 0.f), 8, 0.2f);
+	GetAnimator()->PlayAnim(L"Train_Right", true);
 	//// 오프셋 건드리기
 	//Animation* pAnim = GetAnimator()->FindAnim(L"Jiwoo_Front");
 	//// 하나만
@@ -66,23 +58,6 @@ void Player::Update()
 		vPos.x += 100.f * fDT;
 		GetAnimator()->PlayAnim(L"Jiwoo_Right", true);
 	}
-	if (KEY_PRESS(KEY_TYPE::UP))
-	{
-		vPos.y -= 100.f * fDT;
-		GetAnimator()->PlayAnim(L"Jiwoo_Back", true);
-	}
-	if (KEY_PRESS(KEY_TYPE::DOWN))
-	{
-		vPos.y += 100.f * fDT;
-		GetAnimator()->PlayAnim(L"Jiwoo_Front", true);
-	}
-	if (KEY_DOWN(KEY_TYPE::SPACE))
-	{
-		CreateBullet();
-		ResMgr::GetInst()->Play(L"Shoot");
-	}
-	if(KEY_PRESS(KEY_TYPE::CTRL))
-		GetAnimator()->PlayAnim(L"Jiwoo_Attack", false, 1);
 	SetPos(vPos);
 	GetAnimator()->Update();
 }

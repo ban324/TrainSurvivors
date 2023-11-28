@@ -17,6 +17,7 @@ Texture::~Texture()
 
 void Texture::Load(const wstring& _strFilePath)
 {
+	wstring str = _strFilePath.c_str();
 	m_hBit = (HBITMAP)LoadImage(nullptr, _strFilePath.c_str(), IMAGE_BITMAP
 		, 0, 0, LR_LOADFROMFILE | LR_CREATEDIBSECTION);
 	assert(m_hBit);
