@@ -38,6 +38,7 @@ public:
 	}
 	const HDC& GetBackDC() const
 	{
+		PatBlt(m_hbackDC, 0, 0, m_ptResolution.x, m_ptResolution.y, WHITENESS);
 		return m_hbackDC;
 	}
 	const HBRUSH& GetBrush(BRUSH_TYPE _eType)
