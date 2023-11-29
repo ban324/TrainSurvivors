@@ -129,3 +129,58 @@ tSoundInfo* ResMgr::FindSound(const wstring& _strKey)
         return nullptr;
     return iter->second;
 }
+
+void ResMgr::LoadFont(const wstring& _strKey, const wstring& _strReleativePath, int fontSize)
+{
+    if (FindFont(_strKey))
+        return;
+    wstring strFilePath = PathMgr::GetInst()->GetResPath();
+    strFilePath += _strReleativePath;
+
+    // wstring to string
+    std::string str;
+    str.assign(strFilePath.begin(), strFilePath.end());
+
+    //tSoundInfo* ptSound = new tSoundInfo;
+    //ptSound->IsLoop = _IsLoop;
+    //// 사운드 객체를 만드는 것은 system임.
+    //                        //파일경로,  FMOD_MODE, NULL, &sound
+    //m_pSystem->createSound(str.c_str(), eMode, nullptr, &ptSound->pSound);
+    const wchar_t* fontName = _strKey.c_str();
+    const wchar_t* fontPath = strFilePath.c_str();
+    AddFontResource(fontPath);
+    HFONT hFont = CreateFont(
+        fontSize,                   // Height of the font
+        0,                          // Average character width
+        0,                          // Angle of escapement
+        0,                          // Baseline
+        FW_NORMAL,                  // Weight
+        FALSE,                      // Italic
+        FALSE,                      // Underline
+        FALSE,                      // Strikeout
+        DEFAULT_CHARSET,            // Character set identifier
+        OUT_DEFAULT_PRECIS,         // Output precision
+        CLIP_DEFAULT_PRECIS,        // Clipping precision
+        DEFAULT_QUALITY,            // Output quality
+        DEFAULT_PITCH | FF_DONTCARE,// Pitch and family
+        fontName                    // Font name
+    );
+    m_mapFont.insert({ _strKey, hFont });
+}
+
+bool ResMgr::FindFont(const wstring& _strKey)
+{
+    map<wstring, HFONT>::iterator iter = m_mapFont.find(_strKey);
+
+    if (iter == m_mapFont.end())
+        return false;
+    return true;
+}
+
+HFONT ResMgr::GetFont(const wstring& _strKey)
+{
+    if (!FindFont(_strKey))
+        return nullptr;
+
+    return m_mapFont[_strKey];
+}

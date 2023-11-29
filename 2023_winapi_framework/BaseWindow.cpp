@@ -2,6 +2,7 @@
 #include "BaseWindow.h"
 #include "Resource.h"
 #include "Core.h"
+
 BaseWindow::BaseWindow(POINT _ptResolution)
 	: m_hWnd(0)
 	, m_hInst(0)
@@ -36,8 +37,10 @@ ATOM BaseWindow::MyRegisterClass()
     wcex.style = CS_HREDRAW | CS_VREDRAW;
     wcex.lpfnWndProc = BaseWindow::WndProc;
     wcex.cbClsExtra = 0;
+
     wcex.cbWndExtra = 0;
     wcex.hInstance = m_hInst;
+
     wcex.hIcon = LoadIcon(m_hInst, MAKEINTRESOURCE(IDI_MY2023WINAPIFRAMEWORK22));
     wcex.hCursor = LoadCursor(nullptr, IDC_ARROW);
     wcex.hbrBackground = (HBRUSH)(COLOR_WINDOW + 1);
@@ -52,6 +55,8 @@ void BaseWindow::WindowCreate()
 {
     int iWinposx = GetSystemMetrics(SM_CXSCREEN) / 2 - m_ptResolution.x / 2;
     int iWinposy = GetSystemMetrics(SM_CYSCREEN) / 2 - m_ptResolution.y / 2;
+    iWinposx = 0;
+    iWinposy = 0;
     
     m_hWnd = CreateWindowW(WINDOW_CLASS_NAME, L"Jun's Framework", WS_OVERLAPPEDWINDOW,
         iWinposx, iWinposy, m_ptResolution.x, m_ptResolution.y, nullptr, nullptr, m_hInst, nullptr);
