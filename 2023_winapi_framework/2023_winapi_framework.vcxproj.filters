@@ -65,6 +65,9 @@
     <Filter Include="Engine\04. Object\MainObject\IntroObject">
       <UniqueIdentifier>{cce5e441-d01c-4b3b-814e-8c27d0425cdd}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Engine\03. Manager\MonsterMgr">
+      <UniqueIdentifier>{2e460c0b-c177-4c27-b5f4-870adca5f53e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -163,6 +166,9 @@
     <ClInclude Include="Introbackground.h">
       <Filter>Engine\04. Object\MainObject\IntroObject</Filter>
     </ClInclude>
+    <ClInclude Include="MonsterMgr.h">
+      <Filter>Engine\03. Manager\MonsterMgr</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="2023_winapi_framework.rc">
@@ -255,6 +261,9 @@
     </ClCompile>
     <ClCompile Include="Introbackground.cpp">
       <Filter>Engine\04. Object\MainObject\IntroObject</Filter>
+    </ClCompile>
+    <ClCompile Include="MonsterMgr.cpp">
+      <Filter>Engine\03. Manager\MonsterMgr</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

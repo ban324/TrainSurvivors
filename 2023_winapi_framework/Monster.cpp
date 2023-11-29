@@ -8,7 +8,7 @@
 Monster::Monster()
 	: m_fSpeed(100.f)
 	, m_fMaxDis(50.f)
-	, m_vCenterPos(Vec2(0.f,0.f))
+	, m_vCenterPos(Vec2(0.f, 0.f))
 	, m_fDir(1.f) // 오른쪽부터 이동
 	, m_iHp(5)
 {

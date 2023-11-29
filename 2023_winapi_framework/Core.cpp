@@ -7,6 +7,7 @@
 #include "ResMgr.h"
 #include "CollisionMgr.h"
 #include "EventMgr.h"
+#include "MonsterMgr.h"
 bool Core::Init(HWND _hWnd, POINT _ptResolution)
 {
 	// === 변수 초기화 === 
@@ -64,6 +65,7 @@ void Core::Update()
 	KeyMgr::GetInst()->Update();
 	SceneMgr::GetInst()->Update();
 	CollisionMgr::GetInst()->Update();
+	MonsterMgr::GetInst()->Update();
 //	Vec2 vPos = m_obj.GetPos();
 //
 ////	if (GetAsyncKeyState(VK_LEFT) & 0x8000)

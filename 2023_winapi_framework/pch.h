@@ -11,6 +11,7 @@
 #include "define.h"
 #include "Vec2.h"
 #include "enums.h"
+#include "time.h"
 //using namespace std; 사용 지양
 using std::vector;
 using std::map;
