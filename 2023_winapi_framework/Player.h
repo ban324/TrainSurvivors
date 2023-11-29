@@ -13,6 +13,21 @@ public:
 private:
     void CreateBullet();
 private:
+    bool isRight;
+private:
     Texture* m_pTex;
+public :
+    float GetHP()
+    {
+        return currentHP;
+    }
+public:
+    float maxHP;
+    float currentHP;
+    float speed;
+    float power;
+    float duration;
+    float bulletSize;
+    float coolTimePercent;
 };
 

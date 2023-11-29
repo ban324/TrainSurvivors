@@ -17,9 +17,9 @@ Texture::~Texture()
 
 void Texture::Load(const wstring& _strFilePath)
 {
-	wstring str = _strFilePath.c_str();
 	m_hBit = (HBITMAP)LoadImage(nullptr, _strFilePath.c_str(), IMAGE_BITMAP
 		, 0, 0, LR_LOADFROMFILE | LR_CREATEDIBSECTION);
+	DWORD d = GetLastError();
 	assert(m_hBit);
 	m_hDC = CreateCompatibleDC(Core::GetInst()->GetMainDC());
 	SelectObject(m_hDC, m_hBit);

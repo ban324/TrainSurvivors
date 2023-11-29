@@ -17,11 +17,14 @@ public:
 	virtual void ExitCollision(Collider* _pOther);
 	virtual void StayCollision(Collider* _pOther);
 	void Component_Render(HDC _dc);
+private:
+	TAG* tag;
 public:
 	void SetPos(Vec2 _vPos) { m_vPos = _vPos; }
 	void SetScale(Vec2 _vScale) { m_vScale = _vScale; }
 	const Vec2& GetPos() const { return m_vPos; }
 	const Vec2& GetScale() const { return m_vScale; }
+	TAG* GetTag() const { return tag; }
 	Collider* GetCollider() const 
 	{ return m_pCollider; }
 	Animator* GetAnimator()

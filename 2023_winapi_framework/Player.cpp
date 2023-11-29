@@ -12,23 +12,31 @@
 #include "Animator.h"
 #include "Animation.h"
 Player::Player()
-	: m_pTex(nullptr)
+	: m_pTex(nullptr),
+	speed(100.f),
+	power(1.f),
+	duration(1.f),
+	bulletSize(1.f),
+	coolTimePercent(1.f),
+	maxHP(10),
+	currentHP(maxHP)
 {
 	//m_pTex = new Texture;
 	//wstring strFilePath = PathMgr::GetInst()->GetResPath();
 	//strFilePath += L"Texture\\plane.bmp";
 	//m_pTex->Load(strFilePath);
-	m_pTex = ResMgr::GetInst()->TexLoad(L"Player", L"Texture\\jiwoo.bmp");
-	m_pTex = ResMgr::GetInst()->TexLoad(L"P2", L"Texture\\trainright.bmp");
+	CreateAnimator();
+	m_pTex = ResMgr::GetInst()->TexLoad(L"L_Player", L"Texture\\Train_Left.bmp");
+	GetAnimator()->CreateAnim(L"Train_Left", m_pTex, Vec2(0.f, 0.f),
+		Vec2(128.f, 128.f), Vec2(128.f, 0.f), 8, 0.2f);
+	m_pTex = ResMgr::GetInst()->TexLoad(L"R_Player", L"Texture\\Train_Right.bmp");
+	isRight = true;
+	GetAnimator()->CreateAnim(L"Train_Right", m_pTex, Vec2(0.f, 0.f),
+		Vec2(128.f, 128.f), Vec2(128.f, 0.f), 8, 0.05f);
+	//m_pTex = ResMgr::GetInst()->TexLoad(L"jiwoo", L"Texture\\jiwoo.bmp");
 	CreateCollider();
 	GetCollider()->SetScale(Vec2(20.f,30.f));
 	//GetCollider()->SetOffSetPos(Vec2(50.f,0.f));
-	// 엉엉엉 내 20분 ㅠㅠㅠ ㅁ날어;ㅣ남러;ㅁ나얼
-	CreateAnimator();
-	GetAnimator()->CreateAnim(L"Train_Right", m_pTex,Vec2(0.f, 0.f),
-		Vec2(64.f, 64.f), Vec2(64.f, 0.f), 8, 0.2f);
-	GetAnimator()->CreateAnim(L"Train_Left", m_pTex,Vec2(0.f, 0.f),
-		Vec2(64.f, 64.f), Vec2(64.f, 0.f), 8, 0.2f);
 	GetAnimator()->PlayAnim(L"Train_Right", true);
 	//// 오프셋 건드리기
 	//Animation* pAnim = GetAnimator()->FindAnim(L"Jiwoo_Front");
@@ -51,12 +59,12 @@ void Player::Update()
 	if (KEY_PRESS(KEY_TYPE::LEFT))
 	{
 		vPos.x -= 100.f * fDT;
-		GetAnimator()->PlayAnim(L"Jiwoo_Left", true);
+		GetAnimator()->PlayAnim(L"Train_Left", true);
 	}
 	if (KEY_PRESS(KEY_TYPE::RIGHT))
 	{
 		vPos.x += 100.f * fDT;
-		GetAnimator()->PlayAnim(L"Jiwoo_Right", true);
+		GetAnimator()->PlayAnim(L"Train_Right", true);
 	}
 	SetPos(vPos);
 	GetAnimator()->Update();
@@ -78,10 +86,10 @@ void Player::CreateBullet()
 
 void Player::Render(HDC _dc)
 {
-	//Vec2 vPos = GetPos();
-	//Vec2 vScale = GetScale();
-	//int Width = m_pTex->GetWidth();
-	//int Height = m_pTex->GetHeight();
+	Vec2 vPos = GetPos();
+	Vec2 vScale = GetScale();
+	int Width = m_pTex->GetWidth();
+	int Height = m_pTex->GetHeight();
 	//// 1. 기본 옮기기
 	//BitBlt(_dc
 	//	,(int)(vPos.x - vScale.x /2)

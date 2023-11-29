@@ -4,6 +4,7 @@
 #include "Collider.h"
 #include "Object.h"
 #include "EventMgr.h"
+#include "SceneMgr.h"
 Monster::Monster()
 	: m_fSpeed(100.f)
 	, m_fMaxDis(50.f)
@@ -37,7 +38,8 @@ void Monster::Update()
 void Monster::EnterCollision(Collider* _pOther)
 {
 	const Object* pOtherObj = _pOther->GetObj();
-	if (pOtherObj->GetName() == L"Player_Bullet")
+	TAG* tag = pOtherObj->GetTag();
+	if ( *tag == TAG::WEAPON)
 	{
 		// 昏力贸府秦林搁蹬.
 		m_iHp--;

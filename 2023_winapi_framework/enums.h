@@ -48,3 +48,10 @@ enum class EVENT_TYPE
 	SCENE_CHANGE,
 	END
 };
+
+enum class TAG
+{
+	PLYAER,
+	ENEMY,
+	WEAPON
+};
