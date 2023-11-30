@@ -34,6 +34,7 @@ void MonsterMgr::Update()
 		int monsterScale = 10;
 
 		pMonster = new Monster;
+		pMonster->SetPlayerObj(playerObj);
 		pMonster->SetPos(SpawnVec2());
 		pMonster->SetScale(Vec2(monsterScale, monsterScale));
 		pMonster->SetCenterPos(pMonster->GetPos());
