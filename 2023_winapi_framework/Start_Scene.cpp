@@ -15,7 +15,7 @@ void Start_Scene::Init()
 	pObj->SetScale(Vec2(100.f,100.f));
 	AddObject(pObj, OBJECT_GROUP::PLAYER);
 
-	MonsterMgr::GetInst()->SetPlayerVec(pObj->GetPos());
+	MonsterMgr::GetInst()->SetPlayerObj(pObj);
 	MonsterMgr::GetInst()->StartSpawnMonster();
 
 	// 몬스터 세팅 마구마구 배치를 해봅시다.

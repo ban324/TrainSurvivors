@@ -3,10 +3,11 @@
 #include "TimeMgr.h"
 #include "Scene.h"
 #include "SceneMgr.h"
+#include "Object.h"
 
-void MonsterMgr::SetPlayerVec(Vec2 pVec)
+void MonsterMgr::SetPlayerObj(Object* pObj)
 {
-	playerVec = pVec;
+	playerObj = pObj;
 }
 
 void MonsterMgr::StartSpawnMonster()
