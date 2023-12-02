@@ -5,7 +5,7 @@
 #include "SceneMgr.h"
 #include "Object.h"
 
-void MonsterMgr::SetPlayerObj(Object* pObj)
+void MonsterMgr::SetPlayerObj(Player* pObj)
 {
 	playerObj = pObj;
 }
@@ -23,6 +23,8 @@ void MonsterMgr::StopSpawnMonster()
 void MonsterMgr::UpgradeSpawn()//아이템 고를때마다/다 고를때 호출
 {
 	spawnTime -= 0.1f;
+	enemyHp += 1.f;
+	enemyAttack += 1.f;
 }
 
 void MonsterMgr::Update()
@@ -34,10 +36,11 @@ void MonsterMgr::Update()
 		int monsterScale = 10;
 
 		pMonster = new Monster;
-		pMonster->SetPlayerObj(playerObj);
 		pMonster->SetPos(SpawnVec2());
 		pMonster->SetScale(Vec2(monsterScale, monsterScale));
 		pMonster->SetCenterPos(pMonster->GetPos());
+		pMonster->SetPlayerObj(playerObj);
+		pMonster->SetStat(enemyHp, enemyAttack);
 		pMonster->SetMoveDis(10);
 		SceneMgr::GetInst()->GetCurScene()->AddObject(pMonster, OBJECT_GROUP::MONSTER);
 	}

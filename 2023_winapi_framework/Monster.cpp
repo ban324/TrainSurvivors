@@ -10,13 +10,13 @@
 Monster::Monster()
 	: playerObj(nullptr)
 	, m_fSpeed(100.f)
+	, m_attack(10)
 	, m_fMaxDis(50.f)
-	, m_vCenterPos(Vec2(0.f, 0.f))
+	, m_vCenterPos(Vec2(10.f, 10.f))
 	, m_fDir(1.f) // 오른쪽부터 이동
 	, m_iHp(5)
 	, m_pTex(nullptr)
 {
-	m_pTex = ResMgr::GetInst()->TexLoad(L"Monster", L"Texture\\plane.bmp");
 	CreateCollider();
 }
 
@@ -26,7 +26,7 @@ Monster::~Monster()
 
 void Monster::Update()
 {
-	m_fDir = playerObj->GetPos().x > m_vCenterPos.x ? 1 : -1;
+	//m_fDir = playerObj->GetPos().x > m_vCenterPos.x ? 1 : -1;
 	Vec2 vCurPos = GetPos();
 	vCurPos.x += m_fSpeed * fDT * m_fDir;
 	
@@ -56,6 +56,22 @@ void Monster::Render(HDC _dc)
 	Component_Render(_dc);
 }
 
+void Monster::SetPlayerObj(Player* pObj)
+{
+	playerObj = pObj;
+	m_fDir = playerObj->GetPos().x > m_vCenterPos.x ? 1 : -1;
+	if (m_fDir == 1) //오른쪽사진
+	{
+		//m_pTex = ResMgr::GetInst()->TexLoad(L"Monster", L"Texture\\Robber1.bmp");
+	}
+	else //왼쪽사진
+	{
+		//m_pTex = ResMgr::GetInst()->TexLoad(L"Monster", L"Texture\\Robber1.bmp");	
+	}
+	m_pTex = ResMgr::GetInst()->TexLoad(L"Monster", L"Texture\\planem.bmp");
+}
+
+
 void Monster::EnterCollision(Collider* _pOther)
 {
 	const Object* pOtherObj = _pOther->GetObj();
@@ -69,6 +85,7 @@ void Monster::EnterCollision(Collider* _pOther)
 	}
 	else if (*tag == TAG::PLYAER)
 	{
+		playerObj->currentHP -= m_attack;
 		EventMgr::GetInst()->DeleteObject(this);
 	}
 }

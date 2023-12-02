@@ -9,12 +9,14 @@ class MonsterMgr
 	SINGLE(MonsterMgr);
 private:
 	Monster* pMonster = nullptr;
-	Object* playerObj;
+	Player* playerObj;
+	float enemyHp = 5.f;
+	float enemyAttack = 2.f;
 	float spawnTime = 2.f;
 	float currentTime = 0.f;
 	bool isSpawning = false;
 public:
-	void SetPlayerObj(Object* pObj);
+	void SetPlayerObj(Player* pObj);
 	void StartSpawnMonster();
 	void StopSpawnMonster();
 	void UpgradeSpawn();
