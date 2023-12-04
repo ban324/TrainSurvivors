@@ -17,7 +17,7 @@ public:
 	virtual void ExitCollision(Collider* _pOther);
 	virtual void StayCollision(Collider* _pOther);
 	void Component_Render(HDC _dc);
-private:
+protected:
 	TAG* tag;
 public:
 	void SetPos(Vec2 _vPos) { m_vPos = _vPos; }
@@ -34,7 +34,7 @@ public:
 	const wstring& GetName() const { return m_strName; }
 	void SetName(wstring _name) { m_strName = _name; }
 	bool GetIsDead() const { return !m_IsAlive; }
-private:
+protected:
 	void SetDead() { m_IsAlive = false; }
 	friend class EventMgr;
 public:

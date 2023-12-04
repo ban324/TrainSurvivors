@@ -183,11 +183,13 @@
     <ClInclude Include="Introbackground.h" />
     <ClInclude Include="Intro_Scene.h" />
     <ClInclude Include="KeyMgr.h" />
+    <ClInclude Include="MachineGun.h" />
     <ClInclude Include="Monster.h" />
     <ClInclude Include="Object.h" />
     <ClInclude Include="PathMgr.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="Player.h" />
+    <ClInclude Include="Projectile.h" />
     <ClInclude Include="Res.h" />
     <ClInclude Include="ResMgr.h" />
     <ClInclude Include="Resource.h" />
@@ -199,6 +201,7 @@
     <ClInclude Include="Texture.h" />
     <ClInclude Include="TimeMgr.h" />
     <ClInclude Include="Vec2.h" />
+    <ClInclude Include="Weapon.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Animation.cpp" />
@@ -213,11 +216,13 @@
     <ClCompile Include="Introbackground.cpp" />
     <ClCompile Include="Intro_Scene.cpp" />
     <ClCompile Include="KeyMgr.cpp" />
+    <ClCompile Include="MachineGun.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Monster.cpp" />
     <ClCompile Include="Object.cpp" />
     <ClCompile Include="PathMgr.cpp" />
     <ClCompile Include="Player.cpp" />
+    <ClCompile Include="Projectile.cpp" />
     <ClCompile Include="Res.cpp" />
     <ClCompile Include="ResMgr.cpp" />
     <ClCompile Include="Scene.cpp" />
@@ -227,6 +232,7 @@
     <ClCompile Include="Texture.cpp" />
     <ClCompile Include="TimeMgr.cpp" />
     <ClCompile Include="Vec2.cpp" />
+    <ClCompile Include="Weapon.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="2023_winapi_framework.rc" />

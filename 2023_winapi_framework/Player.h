@@ -1,5 +1,6 @@
 #pragma once
 #include "Object.h"
+class Weapon;
 class Texture;
 class Player :
     public Object
@@ -21,6 +22,8 @@ public :
     {
         return currentHP;
     }
+public:
+    vector<Weapon> weapons;
 public:
     float maxHP;
     float currentHP;
