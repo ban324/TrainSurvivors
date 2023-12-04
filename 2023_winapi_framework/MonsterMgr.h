@@ -8,7 +8,6 @@ class MonsterMgr
 {
 	SINGLE(MonsterMgr);
 private:
-	Monster* pMonster = nullptr;
 	Player* playerObj;
 	float enemyHp = 5.f;
 	float enemyAttack = 2.f;

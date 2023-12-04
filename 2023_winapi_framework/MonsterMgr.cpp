@@ -34,8 +34,7 @@ void MonsterMgr::Update()
 		currentTime = 0;
 
 		int monsterScale = 10;
-
-		pMonster = new Monster;
+		Monster* pMonster = new Monster;
 		pMonster->SetPos(SpawnVec2());
 		pMonster->SetScale(Vec2(monsterScale, monsterScale));
 		pMonster->SetCenterPos(pMonster->GetPos());

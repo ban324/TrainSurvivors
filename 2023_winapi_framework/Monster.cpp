@@ -13,7 +13,7 @@ Monster::Monster()
 	, m_attack(10)
 	, m_fMaxDis(50.f)
 	, m_vCenterPos(Vec2(10.f, 10.f))
-	, m_fDir(1.f) // 오른쪽부터 이동
+	, m_fDir(0.f) // 오른쪽부터 이동
 	, m_iHp(5)
 	, m_pTex(nullptr)
 {
@@ -29,7 +29,7 @@ void Monster::Update()
 	//m_fDir = playerObj->GetPos().x > m_vCenterPos.x ? 1 : -1;
 	Vec2 vCurPos = GetPos();
 	vCurPos.x += m_fSpeed * fDT * m_fDir;
-	
+
 	// 내가 갈 수 있는 거리 최대로 갔냐? => 방향 바꿔줄거야.
 	//float fDist = abs(m_vCenterPos.x - vCurPos.x) - m_fMaxDis;
 	//if (fDist > 0.f)
@@ -60,15 +60,14 @@ void Monster::SetPlayerObj(Player* pObj)
 {
 	playerObj = pObj;
 	m_fDir = playerObj->GetPos().x > m_vCenterPos.x ? 1 : -1;
-	if (m_fDir == 1) //오른쪽사진
+	if (m_fDir == 1) //첨에 뜬 이미지만 계속 뜬다
 	{
-		//m_pTex = ResMgr::GetInst()->TexLoad(L"Monster", L"Texture\\Robber1.bmp");
+		m_pTex = ResMgr::GetInst()->TexLoad(L"Monster", L"Texture\\Robber1_Right.bmp");
 	}
-	else //왼쪽사진
+	else
 	{
-		//m_pTex = ResMgr::GetInst()->TexLoad(L"Monster", L"Texture\\Robber1.bmp");	
+		m_pTex = ResMgr::GetInst()->TexLoad(L"Monster", L"Texture\\Robber1_Left.bmp");
 	}
-	m_pTex = ResMgr::GetInst()->TexLoad(L"Monster", L"Texture\\planem.bmp");
 }
 
 
