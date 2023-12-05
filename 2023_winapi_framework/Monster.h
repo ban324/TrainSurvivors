@@ -18,7 +18,10 @@ public:
 	void SetPlayerObj(Player* pObj);
 	void SetSpeed(float _f) { m_fSpeed = _f; }
 	void SetStat(float _hp, float _attack) { m_iHp = _hp; m_attack = _attack; }
-	void SetCenterPos(Vec2 _vPos) { m_vCenterPos = _vPos; }
+	void SetCenterPos(Vec2 _vPos) 
+	{ 
+		m_vCenterPos = _vPos;
+	}
 	void SetMoveDis(float _f) { m_fMaxDis = _f; }
 	const float& GetSpeed() const { return m_fSpeed; }
 private:

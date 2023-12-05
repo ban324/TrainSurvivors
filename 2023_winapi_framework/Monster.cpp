@@ -18,6 +18,7 @@ Monster::Monster()
 	, m_pTex(nullptr)
 {
 	CreateCollider();
+	m_pCollider->SetOffSetPos(Vec2(m_vCenterPos.x + 15, m_vCenterPos.y + 15));
 }
 
 Monster::~Monster()
@@ -62,11 +63,11 @@ void Monster::SetPlayerObj(Player* pObj)
 	m_fDir = playerObj->GetPos().x > m_vCenterPos.x ? 1 : -1;
 	if (m_fDir == 1) //Ã·¿¡ ¶á ÀÌ¹ÌÁö¸¸ °è¼Ó ¶á´Ù
 	{
-		m_pTex = ResMgr::GetInst()->TexLoad(L"Monster", L"Texture\\Robber1_Right.bmp");
+		m_pTex = ResMgr::GetInst()->TexLoad(L"Robber1_Right", L"Texture\\Robber1_Right.bmp");
 	}
 	else
 	{
-		m_pTex = ResMgr::GetInst()->TexLoad(L"Monster", L"Texture\\Robber1_Left.bmp");
+		m_pTex = ResMgr::GetInst()->TexLoad(L"Robber1_Left", L"Texture\\Robber1_Left.bmp");
 	}
 }
 

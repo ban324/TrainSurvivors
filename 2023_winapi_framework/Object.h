@@ -40,7 +40,7 @@ private:
 public:
 	void CreateCollider();
 	void CreateAnimator();
-private:
+protected:
 	Vec2 m_vPos; // 위치
 	Vec2 m_vScale; // 크기
 	Collider* m_pCollider;
