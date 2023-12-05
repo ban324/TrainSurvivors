@@ -1,6 +1,6 @@
 #pragma once
 #include "Res.h"
-class Texture :
+class Texture:
     public Res
 {
 private:
@@ -17,4 +17,3 @@ private:
     HDC     m_hDC;
     BITMAP  m_bitInfo;
 };
-

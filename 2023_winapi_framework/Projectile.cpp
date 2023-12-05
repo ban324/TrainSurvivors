@@ -16,7 +16,6 @@ Projectile::~Projectile()
 
 void Projectile::Update()
 {
-	m_vPos
 }
 
 void Projectile::Render(HDC _Dc)

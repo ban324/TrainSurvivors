@@ -29,7 +29,7 @@ Player::Player()
 	CreateAnimator();
 	m_pTex = ResMgr::GetInst()->TexLoad(L"L_Player", L"Texture\\Train_Left.bmp");
 	GetAnimator()->CreateAnim(L"Train_Left", m_pTex, Vec2(0.f, 0.f),
-		Vec2(128.f, 128.f), Vec2(128.f, 0.f), 8, 0.2f);
+		Vec2(128.f, 128.f), Vec2(128.f, 0.f), 8, 0.05f);
 	m_pTex = ResMgr::GetInst()->TexLoad(L"R_Player", L"Texture\\Train_Right.bmp");
 	isRight = true;
 	GetAnimator()->CreateAnim(L"Train_Right", m_pTex, Vec2(0.f, 0.f),

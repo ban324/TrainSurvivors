@@ -1,6 +1,6 @@
 #pragma once
 #include "Weapon.h"
-class Texture {};
+class Texture;
 class MachineGun
 	:public Weapon
 {

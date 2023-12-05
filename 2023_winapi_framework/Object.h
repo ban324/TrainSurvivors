@@ -24,6 +24,7 @@ public:
 	void SetScale(Vec2 _vScale) { m_vScale = _vScale; }
 	const Vec2& GetPos() const { return m_vPos; }
 	const Vec2& GetScale() const { return m_vScale; }
+	void SetTag(TAG* val) { tag = val; };
 	TAG* GetTag() const { return tag; }
 	Collider* GetCollider() const 
 	{ return m_pCollider; }
