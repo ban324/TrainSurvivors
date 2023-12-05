@@ -4,6 +4,7 @@
 #include "TimeMgr.h"
 #include "Bullet.h"
 #include "SceneMgr.h"
+#include "Weapon.h"
 #include "Scene.h"
 #include "Texture.h"
 #include "PathMgr.h"
@@ -66,6 +67,10 @@ void Player::Update()
 		vPos.x += 100.f * fDT;
 		GetAnimator()->PlayAnim(L"Train_Right", true);
 	}
+	for (auto iter = weapons.begin(); iter != weapons.end(); ++iter)
+	{
+		iter->Update();
+	}
 	SetPos(vPos);
 	GetAnimator()->Update();
 }
@@ -118,5 +123,10 @@ void Player::Render(HDC _dc)
 	//	, (int)(vPos.y - vScale.y / 2)
 	//	, Width, Height, m_pTex->GetDC()
 	//	, 0, 0, Width, Height, RGB(255, 0, 255));
+	for (auto iter = weapons.begin(); iter != weapons.end(); ++iter)
+	{
+		iter->Render(_dc);
+	}
+
 	Component_Render(_dc);
 }

@@ -42,6 +42,4 @@ void TimeMgr::Update()
 		//wsprintf();
 		//SetWindowText(Core::GetInst()->GetHwnd(), titlebuf);
 	}
-
-
 }
