@@ -33,11 +33,10 @@ void Monster::Update()
 
 	Vec2 vec = Vec2(playerObj->GetPos().x - vCurPos.x, playerObj->GetPos().y - vCurPos.y).Normalize();
 
-	if (abs(vCurPos.x - playerObj->GetPos().x) > 0.2f && abs(vCurPos.y - playerObj->GetPos().y) > 0.2f)
-	{
+	if (abs(vCurPos.x - playerObj->GetPos().x) > 35.f)
 		vCurPos.x += m_fSpeed * fDT * vec.x;
+	if(abs(vCurPos.y - playerObj->GetPos().y) > 35.f)
 		vCurPos.y += m_fSpeed * fDT * vec.y;
-	}
 
 	SpriteFlip();
 
