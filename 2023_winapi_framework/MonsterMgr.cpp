@@ -35,8 +35,7 @@ void MonsterMgr::Update()
 
 		int monsterScale = 10;
 		Monster* pMonster = new Monster;
-		TAG enemyTag = TAG::ENEMY;
-		pMonster->SetTag(&enemyTag);
+		pMonster->SetTag(TAG::ENEMY);
 		pMonster->SetPos(SpawnVec2());
 		pMonster->SetScale(Vec2(monsterScale, monsterScale));
 		pMonster->SetCenterPos(pMonster->GetPos());
