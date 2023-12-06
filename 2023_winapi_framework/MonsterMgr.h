@@ -25,11 +25,14 @@ private:
 	{
 		playerObj->GetPos().x;
 		int spawnX = playerObj->GetPos().x;
+		int spawnY = playerObj->GetPos().y;
 		bool left = rand() % 2 == 0;
+		bool up = rand() % 2 == 0;
 		spawnX += rand() % 2 == 0 ? 700 : -700;
+		spawnY += rand() % 2 == 0 ? 700 : -700;
 		Vec2 spawnVec;
 		spawnVec.x = spawnX;
-		spawnVec.y = playerObj->GetPos().y;
+		spawnVec.y = spawnY;
 		return spawnVec;
 	}
 	const bool& IsSpawning() const

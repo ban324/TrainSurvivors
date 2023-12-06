@@ -10,6 +10,7 @@ public:
 public:
 	void Update() override;
 	void Render(HDC _dc) override;
+	void SpriteFlip();
 	virtual void EnterCollision(Collider* _pOther) override;
 	virtual void ExitCollision(Collider* _pOther)  override;
 	virtual void StayCollision(Collider* _pOther)  override;
@@ -30,7 +31,8 @@ private:
 	float m_attack;
 	Vec2 m_vCenterPos; // 중심 위치
 	float m_fMaxDis; // 이동할 수 있는 최대 거리
-	float m_fDir; // 방향(-1: 왼쪽, 1: 오른쪽)
+	float m_fDirX; // 방향(-1: 왼쪽, 1: 오른쪽)
+	float m_fDirY; // 방향(-1: 왼쪽, 1: 오른쪽)
 	int   m_iHp; // 체력
 	Texture* m_pTex;
 };
