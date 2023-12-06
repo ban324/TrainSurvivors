@@ -26,10 +26,10 @@ private:
 		playerObj->GetPos().x;
 		int spawnX = playerObj->GetPos().x;
 		int spawnY = playerObj->GetPos().y;
-		bool left = rand() % 2 == 0;
-		bool up = rand() % 2 == 0;
-		spawnX += rand() % 2 == 0 ? 700 : -700;
-		spawnY += rand() % 2 == 0 ? 700 : -700;
+		int xAbs = (rand() % 1400) - 700;
+		spawnX += xAbs;
+		int yAbs = 700 - abs(xAbs);
+		spawnY += rand() % 2 == 0 ? yAbs : -yAbs;
 		Vec2 spawnVec;
 		spawnVec.x = spawnX;
 		spawnVec.y = spawnY;
