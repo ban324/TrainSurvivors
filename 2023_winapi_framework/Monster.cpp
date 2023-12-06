@@ -33,8 +33,11 @@ void Monster::Update()
 
 	Vec2 vec = Vec2(playerObj->GetPos().x - vCurPos.x, playerObj->GetPos().y - vCurPos.y).Normalize();
 
-	vCurPos.x += m_fSpeed * fDT * vec.x;
-	vCurPos.y += m_fSpeed * fDT * vec.y;
+	if (abs(vCurPos.x - playerObj->GetPos().x) > 0.2f && abs(vCurPos.y - playerObj->GetPos().y) > 0.2f)
+	{
+		vCurPos.x += m_fSpeed * fDT * vec.x;
+		vCurPos.y += m_fSpeed * fDT * vec.y;
+	}
 
 	SpriteFlip();
 
@@ -97,8 +100,10 @@ void Monster::EnterCollision(Collider* _pOther)
 
 void Monster::ExitCollision(Collider* _pOther)
 {
+
 }
 
 void Monster::StayCollision(Collider* _pOther)
 {
+
 }
