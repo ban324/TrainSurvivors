@@ -31,12 +31,30 @@ void MachineGun::Update()
 			proj->SetPos(GetPos());
 			Vec2 dir = owner->dir;
 			proj->SetDir(dir);
-			scene->AddObject(proj, OBJECT_GROUP::BULLET);
+			proj->owner = this;
+			vecProjectiles.push_back(proj);
+
 		}
 		_currentTime = 0;
+	}
+	for (auto iter = vecProjectiles.begin(); iter != vecProjectiles.end(); ++iter)
+	{
+		(*iter)->Update();
 	}
 }
 
 void MachineGun::Render(HDC _dc)
 {
+	for (auto iter = vecProjectiles.begin(); iter != vecProjectiles.end(); ++iter)
+	{
+		if (!(*iter)->GetIsDead())
+		{
+
+			(*iter)->Render(_dc);
+		}
+		else
+		{
+			iter = vecProjectiles.erase(find(vecProjectiles.begin(), vecProjectiles.end(), *iter));
+		}
+	}
 }

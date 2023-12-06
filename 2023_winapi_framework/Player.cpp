@@ -23,6 +23,7 @@ Player::Player()
 	maxHP(10),
 	currentHP(maxHP)
 {
+	dir = Vec2(1, 0);
 	//m_pTex = new Texture;
 	//wstring strFilePath = PathMgr::GetInst()->GetResPath();
 	//strFilePath += L"Texture\\plane.bmp";
