@@ -13,6 +13,8 @@ public:
 private:
 	Texture * m_projectileTex;
 private:
+	float _bulletSpeed;
 	float _currentTime;
+	float _bulletDelay;
 };
 

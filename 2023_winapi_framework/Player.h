@@ -23,7 +23,9 @@ public :
         return currentHP;
     }
 public:
-    vector<Weapon> weapons;
+    vector<Weapon *> weapons;
+public:
+    Vec2 dir;
 public:
     float maxHP;
     float currentHP;

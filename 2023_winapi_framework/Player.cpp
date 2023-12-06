@@ -11,6 +11,7 @@
 #include "ResMgr.h"
 #include "Collider.h"
 #include "Animator.h"
+#include"MachineGun.h"
 #include "Animation.h"
 Player::Player()
 	: m_pTex(nullptr),
@@ -36,7 +37,7 @@ Player::Player()
 		Vec2(128.f, 128.f), Vec2(128.f, 0.f), 8, 0.05f);
 	//m_pTex = ResMgr::GetInst()->TexLoad(L"jiwoo", L"Texture\\jiwoo.bmp");
 	CreateCollider();
-	GetCollider()->SetScale(Vec2(20.f,30.f));
+	GetCollider()->SetScale(Vec2(128.f,128.f));
 	//GetCollider()->SetOffSetPos(Vec2(50.f,0.f));
 	GetAnimator()->PlayAnim(L"Train_Right", true);
 	//// 오프셋 건드리기
@@ -47,6 +48,19 @@ Player::Player()
 	//// 프레임 다 
 	//for (size_t i = 0; i < pAnim->GetMaxFrame(); ++i)
 	//	pAnim->SetFrameOffset(i, Vec2(0.f, 20.f));
+
+	MachineGun* mcg = new MachineGun();
+	if (mcg)
+	{
+		mcg->bulletSize = 50.f;
+		mcg->cooltime = 1.f;
+		mcg->duration - 5.f;
+		mcg->projectileCnt = 1;
+		mcg->power = 1.f;
+		mcg->SetPos(GetPos());;
+		mcg->owner = this;
+		weapons.push_back(mcg);
+	}
 }
 Player::~Player()
 {
@@ -55,24 +69,26 @@ Player::~Player()
 }
 void Player::Update()
 {
-	Vec2 vPos = GetPos();
 
 	if (KEY_PRESS(KEY_TYPE::LEFT))
 	{
-		vPos.x -= 100.f * fDT;
+		dir.x = -1;
 		GetAnimator()->PlayAnim(L"Train_Left", true);
 	}
 	if (KEY_PRESS(KEY_TYPE::RIGHT))
 	{
-		vPos.x += 100.f * fDT;
+		dir.x = 1;
 		GetAnimator()->PlayAnim(L"Train_Right", true);
 	}
 	for (auto iter = weapons.begin(); iter != weapons.end(); ++iter)
 	{
-		iter->Update();
+		(*iter)->Update();
 	}
+	Vec2 vPos = GetPos();
+	vPos.x += dir.x * 100 * fDT;	
 	SetPos(vPos);
 	GetAnimator()->Update();
+	
 }
 
 void Player::CreateBullet()
@@ -123,10 +139,10 @@ void Player::Render(HDC _dc)
 	//	, (int)(vPos.y - vScale.y / 2)
 	//	, Width, Height, m_pTex->GetDC()
 	//	, 0, 0, Width, Height, RGB(255, 0, 255));
+	Component_Render(_dc);
 	for (auto iter = weapons.begin(); iter != weapons.end(); ++iter)
 	{
-		iter->Render(_dc);
+		(*iter)->Render(_dc);
 	}
 
-	Component_Render(_dc);
 }

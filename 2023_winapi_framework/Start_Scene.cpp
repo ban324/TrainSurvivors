@@ -13,6 +13,7 @@ void Start_Scene::Init()
 	Player* pObj = new Player;
 	pObj->SetPos((Vec2({Core::GetInst()->GetResolution().x /2, Core::GetInst()->GetResolution().y / 2})));
 	pObj->SetScale(Vec2(100.f,100.f));
+	pObj->SetTag(TAG::PLYAER);
 	AddObject(pObj, OBJECT_GROUP::PLAYER);
 
 	MonsterMgr::GetInst()->SetPlayerObj(pObj);
