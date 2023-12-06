@@ -13,7 +13,8 @@ Monster::Monster()
 	, m_attack(10)
 	, m_fMaxDis(50.f)
 	, m_vCenterPos(Vec2(10.f, 10.f))
-	, m_fDir(0.f) // 오른쪽부터 이동
+	, m_fDirX(0.f)
+	, m_fDirY(0.f)
 	, m_iHp(5)
 	, m_pTex(nullptr)
 {
@@ -29,16 +30,14 @@ void Monster::Update()
 {
 	//m_fDir = playerObj->GetPos().x > m_vCenterPos.x ? 1 : -1;
 	Vec2 vCurPos = GetPos();
-	vCurPos.x += m_fSpeed * fDT * m_fDir;
 
-	// 내가 갈 수 있는 거리 최대로 갔냐? => 방향 바꿔줄거야.
-	//float fDist = abs(m_vCenterPos.x - vCurPos.x) - m_fMaxDis;
-	//if (fDist > 0.f)
-	//{
-	//	// dir 바꾸기
-	//	m_fDir *= -1;
-	//	vCurPos.x += fDist * m_fDir;
-	//}
+	Vec2 vec = Vec2(playerObj->GetPos().x - vCurPos.x, playerObj->GetPos().y - vCurPos.y).Normalize();
+
+	vCurPos.x += m_fSpeed * fDT * vec.x;
+	vCurPos.y += m_fSpeed * fDT * vec.y;
+
+	SpriteFlip();
+
 	SetPos(vCurPos);
 }
 
@@ -57,11 +56,11 @@ void Monster::Render(HDC _dc)
 	Component_Render(_dc);
 }
 
-void Monster::SetPlayerObj(Player* pObj)
+void Monster::SpriteFlip()
 {
-	playerObj = pObj;
-	m_fDir = playerObj->GetPos().x > m_vCenterPos.x ? 1 : -1;
-	if (m_fDir == 1) //첨에 뜬 이미지만 계속 뜬다
+	m_fDirX = playerObj->GetPos().x > m_vCenterPos.x ? 1 : -1;
+	m_fDirY = playerObj->GetPos().y > m_vCenterPos.y ? 1 : -1;
+	if (m_fDirX == 1)
 	{
 		m_pTex = ResMgr::GetInst()->TexLoad(L"Robber1_Right", L"Texture\\Robber1_Right.bmp");
 	}
@@ -69,6 +68,12 @@ void Monster::SetPlayerObj(Player* pObj)
 	{
 		m_pTex = ResMgr::GetInst()->TexLoad(L"Robber1_Left", L"Texture\\Robber1_Left.bmp");
 	}
+}
+
+void Monster::SetPlayerObj(Player* pObj)
+{
+	playerObj = pObj;
+	SpriteFlip();
 }
 
 
