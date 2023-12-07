@@ -33,14 +33,41 @@ void MonsterMgr::Update()
 	{
 		currentTime = 0;
 
+		Monster* pMonster;
+
+		int random = rand() % 10;
+		if (random > 6)
+		{
+			pMonster = new Monster;
+			pMonster->SetKind(MONSTER_KIND::NORMAL1);
+			pMonster->SetStat(enemyHp, enemyAttack);
+		}
+		else if (random > 3)
+		{
+			pMonster = new Monster;
+			pMonster->SetKind(MONSTER_KIND::NORMAL2); 
+			pMonster->SetStat(enemyHp, enemyAttack);
+		}
+		else if (random > 0)
+		{
+			pMonster = new Monster;
+			pMonster->SetKind(MONSTER_KIND::NORMAL3);
+			pMonster->SetStat(enemyHp, enemyAttack);
+		}
+		else
+		{
+			pMonster = new Monster;
+			pMonster->SetKind(MONSTER_KIND::BOSS);
+			pMonster->SetStat(enemyHp, enemyAttack);
+		}
+
 		int monsterScale = 10;
-		Monster* pMonster = new Monster;
-		pMonster->SetTag(TAG::ENEMY);
+		TAG monsterTag = TAG::ENEMY;
+		pMonster->SetTag(monsterTag);
 		pMonster->SetPos(SpawnVec2());
 		pMonster->SetScale(Vec2(monsterScale, monsterScale));
 		pMonster->SetCenterPos(pMonster->GetPos());
 		pMonster->SetPlayerObj(playerObj);
-		pMonster->SetStat(enemyHp, enemyAttack);
 		pMonster->SetMoveDis(10);
 		SceneMgr::GetInst()->GetCurScene()->AddObject(pMonster, OBJECT_GROUP::MONSTER);
 	}

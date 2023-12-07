@@ -18,22 +18,30 @@ public:
 public:
 	void SetPlayerObj(Player* pObj);
 	void SetSpeed(float _f) { m_fSpeed = _f; }
-	void SetStat(float _hp, float _attack) { m_iHp = _hp; m_attack = _attack; }
+	void SetStat(float _hp, float _attack) { m_iHp = _hp; m_fAttack = _attack; }
 	void SetCenterPos(Vec2 _vPos) 
 	{ 
 		m_vCenterPos = _vPos;
 	}
 	void SetMoveDis(float _f) { m_fMaxDis = _f; }
 	const float& GetSpeed() const { return m_fSpeed; }
-private:
+	MONSTER_KIND* GetKind() const { return kind; }
+	void SetKind(MONSTER_KIND val) {
+		kind = new MONSTER_KIND;
+		*kind = val;
+	};
+protected:
+	MONSTER_KIND* kind;
 	Player* playerObj;
 	float m_fSpeed; // 몬스터 스피드
-	float m_attack;
+	float m_fAttack;
+	float m_fDelay;
 	Vec2 m_vCenterPos; // 중심 위치
 	float m_fMaxDis; // 이동할 수 있는 최대 거리
 	float m_fDirX; // 방향(-1: 왼쪽, 1: 오른쪽)
 	float m_fDirY; // 방향(-1: 왼쪽, 1: 오른쪽)
 	int   m_iHp; // 체력
+	int	  time;
 	Texture* m_pTex;
 };
 

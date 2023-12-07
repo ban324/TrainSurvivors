@@ -56,3 +56,11 @@ enum class TAG
 	ENEMY,
 	WEAPON
 };
+
+enum class MONSTER_KIND
+{
+	NORMAL1,
+	NORMAL2,
+	NORMAL3,
+	BOSS,
+};

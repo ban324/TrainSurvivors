@@ -10,12 +10,14 @@
 Monster::Monster()
 	: playerObj(nullptr)
 	, m_fSpeed(100.f)
-	, m_attack(10)
+	, m_fAttack(10)
+	, m_fDelay(3)
 	, m_fMaxDis(50.f)
 	, m_vCenterPos(Vec2(10.f, 10.f))
 	, m_fDirX(0.f)
 	, m_fDirY(0.f)
 	, m_iHp(5)
+	, time(0)
 	, m_pTex(nullptr)
 {
 	CreateCollider();
@@ -32,11 +34,22 @@ void Monster::Update()
 	Vec2 vCurPos = GetPos();
 
 	Vec2 vec = Vec2(playerObj->GetPos().x - vCurPos.x, playerObj->GetPos().y - vCurPos.y).Normalize();
+	
+	int x = abs(vCurPos.x - playerObj->GetPos().x);
+	int y = abs(vCurPos.y - playerObj->GetPos().y);
+	int z = sqrt(pow(x, 2) + pow(y, 2));
 
-	if (abs(vCurPos.x - playerObj->GetPos().x) > 35.f)
+	if (z > 70.f)
+	{
+		vCurPos.x += m_fSpeed * fDT * vec.x;
+		vCurPos.y += m_fSpeed * fDT * vec.y;
+	}
+
+	//구버전
+	/*if (abs(vCurPos.x - playerObj->GetPos().x) > 35.f)
 		vCurPos.x += m_fSpeed * fDT * vec.x;
 	if(abs(vCurPos.y - playerObj->GetPos().y) > 35.f)
-		vCurPos.y += m_fSpeed * fDT * vec.y;
+		vCurPos.y += m_fSpeed * fDT * vec.y;*/
 
 	SpriteFlip();
 
@@ -86,14 +99,16 @@ void Monster::EnterCollision(Collider* _pOther)
 	if ( *tag == TAG::WEAPON)
 	{
 		// 삭제처리해주면돼.
+		Object* pModifiedObj = const_cast<Object*>(pOtherObj);
+		EventMgr::GetInst()->DeleteObject(pModifiedObj);
+
 		m_iHp--;
 		if(m_iHp<=0)
 			EventMgr::GetInst()->DeleteObject(this);
 	}
 	else if (*tag == TAG::PLYAER)
 	{
-		playerObj->currentHP -= m_attack;
-		EventMgr::GetInst()->DeleteObject(this);
+		time = 0;
 	}
 }
 
@@ -104,5 +119,13 @@ void Monster::ExitCollision(Collider* _pOther)
 
 void Monster::StayCollision(Collider* _pOther)
 {
-
+	const Object* pOtherObj = _pOther->GetObj();
+	TAG* tag = pOtherObj->GetTag();
+	if (time > m_fDelay)
+	{
+		//공격
+		playerObj->currentHP -= m_fAttack;
+		time = 0;
+	}
+	time += m_fSpeed * fDT * 3;
 }

@@ -68,6 +68,9 @@
     <Filter Include="Engine\03. Manager\MonsterMgr">
       <UniqueIdentifier>{2e460c0b-c177-4c27-b5f4-870adca5f53e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Engine\04. Object\MainObject\MonstersObject">
+      <UniqueIdentifier>{48ef2541-2811-46d7-9c22-d798a2069e0e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -169,6 +172,9 @@
     <ClInclude Include="MonsterMgr.h">
       <Filter>Engine\03. Manager\MonsterMgr</Filter>
     </ClInclude>
+    <ClInclude Include="MachineGun.h" />
+    <ClInclude Include="Projectile.h" />
+    <ClInclude Include="Weapon.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="2023_winapi_framework.rc">
@@ -265,5 +271,8 @@
     <ClCompile Include="MonsterMgr.cpp">
       <Filter>Engine\03. Manager\MonsterMgr</Filter>
     </ClCompile>
+    <ClCompile Include="MachineGun.cpp" />
+    <ClCompile Include="Projectile.cpp" />
+    <ClCompile Include="Weapon.cpp" />
   </ItemGroup>
 </Project>
