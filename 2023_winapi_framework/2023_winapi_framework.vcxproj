@@ -194,6 +194,10 @@
     <ClInclude Include="Res.h" />
     <ClInclude Include="ResMgr.h" />
     <ClInclude Include="Resource.h" />
+    <ClInclude Include="Robber1.h" />
+    <ClInclude Include="Robber2.h" />
+    <ClInclude Include="Robber3.h" />
+    <ClInclude Include="Robber4.h" />
     <ClInclude Include="Scene.h" />
     <ClInclude Include="SceneMgr.h" />
     <ClInclude Include="SelectGDI.h" />
@@ -227,6 +231,10 @@
     <ClCompile Include="Projectile.cpp" />
     <ClCompile Include="Res.cpp" />
     <ClCompile Include="ResMgr.cpp" />
+    <ClCompile Include="Robber1.cpp" />
+    <ClCompile Include="Robber2.cpp" />
+    <ClCompile Include="Robber3.cpp" />
+    <ClCompile Include="Robber4.cpp" />
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="SceneMgr.cpp" />
     <ClCompile Include="SelectGDI.cpp" />

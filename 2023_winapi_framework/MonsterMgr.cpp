@@ -4,6 +4,10 @@
 #include "Scene.h"
 #include "SceneMgr.h"
 #include "Object.h"
+#include "Robber1.h"
+#include "Robber2.h"
+#include "Robber3.h"
+#include "Robber4.h"
 
 void MonsterMgr::SetPlayerObj(Player* pObj)
 {
@@ -38,25 +42,25 @@ void MonsterMgr::Update()
 		int random = rand() % 10;
 		if (random > 6)
 		{
-			pMonster = new Monster;
+			pMonster = new Robber1;
 			pMonster->SetKind(MONSTER_KIND::NORMAL1);
 			pMonster->SetStat(enemyHp, enemyAttack);
 		}
 		else if (random > 3)
 		{
-			pMonster = new Monster;
+			pMonster = new Robber2;
 			pMonster->SetKind(MONSTER_KIND::NORMAL2); 
 			pMonster->SetStat(enemyHp, enemyAttack);
 		}
 		else if (random > 0)
 		{
-			pMonster = new Monster;
+			pMonster = new Robber3;
 			pMonster->SetKind(MONSTER_KIND::NORMAL3);
 			pMonster->SetStat(enemyHp, enemyAttack);
 		}
 		else
 		{
-			pMonster = new Monster;
+			pMonster = new Robber4;
 			pMonster->SetKind(MONSTER_KIND::BOSS);
 			pMonster->SetStat(enemyHp, enemyAttack);
 		}
