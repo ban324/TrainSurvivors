@@ -13,6 +13,7 @@
 #include "Animator.h"
 #include"MachineGun.h"
 #include "Animation.h"
+#include "MonsterMgr.h"
 Player::Player()
 	: m_pTex(nullptr),
 	speed(100.f),
@@ -89,6 +90,11 @@ void Player::Update()
 	SetPos(vPos);
 	GetAnimator()->Update();
 	
+	if (currentHP <= 0)
+	{
+		MonsterMgr::GetInst()->StopSpawnMonster();
+		SceneMgr::GetInst()->LoadScene(L"Gameover_Scene");
+	}
 }
 
 void Player::CreateBullet()

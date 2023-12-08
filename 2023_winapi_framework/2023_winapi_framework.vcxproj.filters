@@ -187,6 +187,9 @@
     <ClInclude Include="Robber4.h">
       <Filter>Engine\04. Object\MainObject\MonstersObject</Filter>
     </ClInclude>
+    <ClInclude Include="Gameover_Scene.h">
+      <Filter>Engine\05. Scene\MainScene</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="2023_winapi_framework.rc">
@@ -297,6 +300,9 @@
     </ClCompile>
     <ClCompile Include="Robber4.cpp">
       <Filter>Engine\04. Object\MainObject\MonstersObject</Filter>
+    </ClCompile>
+    <ClCompile Include="Gameover_Scene.cpp">
+      <Filter>Engine\05. Scene\MainScene</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
