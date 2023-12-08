@@ -61,3 +61,26 @@ void Scene::Release()
 		m_vecObj[i].clear();
 	}
 }
+
+Vec2 Scene::GetProximateDir()
+{
+	Vec2 p_Pos = m_vecObj[(UINT)OBJECT_GROUP::PLAYER][0]->GetPos();
+	int pm1 = rand() % 2 == 1 ? 1: -1;
+	int pm2 = rand() % 2 == 1 ? 1: -1;
+	Vec2 enemyPos = Vec2(rand() * pm1, rand() * pm2);
+	int minDist = 1980;
+	int currentDist;
+	for (auto iter = m_vecObj[(UINT)OBJECT_GROUP::MONSTER].begin(); iter != m_vecObj[(UINT)OBJECT_GROUP::MONSTER].end(); ++iter)
+	{
+
+		currentDist = Vec2::GetDistance(p_Pos, (*iter)->GetPos());
+		if (currentDist < minDist)
+		{
+			minDist = currentDist;
+			enemyPos = (*iter)->GetPos();
+		}
+	}
+	return Vec2(enemyPos.x - p_Pos.x, enemyPos.y - p_Pos.y);
+
+}
+

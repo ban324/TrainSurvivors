@@ -172,6 +172,7 @@
     <ClInclude Include="Animator.h" />
     <ClInclude Include="BaseWindow.h" />
     <ClInclude Include="Bullet.h" />
+    <ClInclude Include="Cactus.h" />
     <ClInclude Include="Collider.h" />
     <ClInclude Include="CollisionMgr.h" />
     <ClInclude Include="Core.h" />
@@ -201,6 +202,7 @@
     <ClInclude Include="targetver.h" />
     <ClInclude Include="Texture.h" />
     <ClInclude Include="TimeMgr.h" />
+    <ClInclude Include="Turret.h" />
     <ClInclude Include="Vec2.h" />
     <ClInclude Include="Weapon.h" />
   </ItemGroup>
@@ -209,6 +211,7 @@
     <ClCompile Include="Animator.cpp" />
     <ClCompile Include="BaseWindow.cpp" />
     <ClCompile Include="Bullet.cpp" />
+    <ClCompile Include="Cactus.cpp" />
     <ClCompile Include="Collider.cpp" />
     <ClCompile Include="CollisionMgr.cpp" />
     <ClCompile Include="Core.cpp" />
@@ -233,6 +236,7 @@
     <ClCompile Include="Start_Scene.cpp" />
     <ClCompile Include="Texture.cpp" />
     <ClCompile Include="TimeMgr.cpp" />
+    <ClCompile Include="Turret.cpp" />
     <ClCompile Include="Vec2.cpp" />
     <ClCompile Include="Weapon.cpp" />
   </ItemGroup>

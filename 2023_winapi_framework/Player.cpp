@@ -13,6 +13,7 @@
 #include "Animator.h"
 #include"MachineGun.h"
 #include "Animation.h"
+#include "Turret.h"
 Player::Player()
 	: m_pTex(nullptr),
 	speed(100.f),
@@ -45,17 +46,17 @@ Player::Player()
 	//Animation* pAnim = GetAnimator()->FindAnim(L"Jiwoo_Front");
 	//// 하나만
 	//pAnim->SetFrameOffset(0, Vec2(0.f, 20.f));
-
+	
 	//// 프레임 다 
 	//for (size_t i = 0; i < pAnim->GetMaxFrame(); ++i)
 	//	pAnim->SetFrameOffset(i, Vec2(0.f, 20.f));
 
-	MachineGun* mcg = new MachineGun();
+	Turret* mcg = new Turret();
 	if (mcg)
 	{
 		mcg->bulletSize = 50.f;
 		mcg->cooltime = 1.f;
-		mcg->duration - 5.f;
+		mcg->duration = 5.f;
 		mcg->projectileCnt = 1;
 		mcg->power = 1.f;
 		mcg->SetPos(GetPos());;

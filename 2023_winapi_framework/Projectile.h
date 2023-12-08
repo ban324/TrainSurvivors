@@ -20,10 +20,14 @@ public:
 	void SetTexutre(Texture* val) { m_pTex = val; }
 	Vec2 GetDir() { return _dir; }
 	void SetDir(Vec2 val) { _dir = val; }
+	void SetDuration(float val) { _lifeTime = val; }
+public:
+	int power;
+	bool isCactus;
 private:
 	float _lifeTime = 3.f;
 	float _curLT = 0;
-	Vec2 _dir;
 	float _speed;
+	Vec2 _dir;
 	Texture * m_pTex;
 };

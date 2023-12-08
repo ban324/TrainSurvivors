@@ -1,5 +1,6 @@
 #pragma once
 #include<assert.h>
+#include <math.h>
 class Vec2
 {
 public:
@@ -9,6 +10,12 @@ public:
 	Vec2(int _x, int _y);
 	Vec2(POINT _pt);
 	Vec2(const Vec2& _vec);
+public:
+	static int GetDistance(Vec2 v1, Vec2 v2)
+	{
+		int distance = sqrt(pow(v1.x - v2.x, 2) + pow(v1.y - v2.y, 2));
+		return distance;
+	}
 public:
 	float Length() { return (float)(sqrt(pow(x, 2) + pow(y, 2))); }
 	Vec2& Normalize()
