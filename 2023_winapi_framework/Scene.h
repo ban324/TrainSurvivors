@@ -18,6 +18,8 @@ public:
 		return m_vecObj[(UINT)_etype];
 	}
 public:
+	void EraseObject(OBJECT_GROUP group, Object * obj);
+public:
 	void AddObject(Object* _pObj, OBJECT_GROUP _eType)
 	{
 		m_vecObj[(UINT)_eType].push_back(_pObj);

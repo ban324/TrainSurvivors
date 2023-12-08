@@ -41,6 +41,7 @@ void Turret::Update()
 			proj->SetDuration(duration);
 			proj->GetCollider()->SetScale(Vec2(20.f, 20.f));
 			vecProjectiles.push_back(proj);
+			scene->AddObject(proj, OBJECT_GROUP::BULLET);
 
 		}
 		_currentTime = 0;
@@ -62,6 +63,8 @@ void Turret::Render(HDC _dc)
 		}
 		else
 		{
+			std::shared_ptr<Scene> scene = SceneMgr::GetInst()->GetCurScene();
+			scene->EraseObject(OBJECT_GROUP::BULLET, (*iter));
 			iter = vecProjectiles.erase(find(vecProjectiles.begin(), vecProjectiles.end(), *iter));
 		}
 	}

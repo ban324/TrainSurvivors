@@ -62,6 +62,11 @@ void Scene::Release()
 	}
 }
 
+void Scene::EraseObject(OBJECT_GROUP group, Object * obj)
+{
+	m_vecObj[(UINT)group].erase(find(m_vecObj[(UINT)group].begin(), m_vecObj[(UINT)group].end(), obj));
+}
+
 Vec2 Scene::GetProximateDir()
 {
 	Vec2 p_Pos = m_vecObj[(UINT)OBJECT_GROUP::PLAYER][0]->GetPos();
