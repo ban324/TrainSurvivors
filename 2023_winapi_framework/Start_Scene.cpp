@@ -8,8 +8,15 @@
 #include "CollisionMgr.h"
 #include "ResMgr.h"
 #include "MonsterMgr.h"
+#include "Introbackground.h"
+
 void Start_Scene::Init()
 {
+	Introbackground* bObj = new Introbackground(ResMgr::GetInst()->TexLoad(L"Background", L"Texture\\Background.bmp"));
+	bObj->SetPos((Vec2({ Core::GetInst()->GetResolution().x / 2 - 1000, Core::GetInst()->GetResolution().y / 2 - 400 })));
+	bObj->SetScale(Vec2(100.f, 100.f));
+	AddObject(bObj, OBJECT_GROUP::BACKGROUND);
+
 	Player* pObj = new Player;
 	pObj->SetPos((Vec2({Core::GetInst()->GetResolution().x /2, Core::GetInst()->GetResolution().y / 2})));
 	pObj->SetScale(Vec2(100.f,100.f));

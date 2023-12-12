@@ -9,10 +9,10 @@ void Robber4::SpriteFlip()
 	m_fDirY = playerObj->GetPos().y > m_vCenterPos.y ? 1 : -1;
 	if (m_fDirX == 1)
 	{
-		m_pTex = ResMgr::GetInst()->TexLoad(L"Robber3_Right", L"Texture\\Robber4_Right.bmp");
+		m_pTex = ResMgr::GetInst()->TexLoad(L"Robber4_Right", L"Texture\\Robber4_Right.bmp");
 	}
 	else
 	{
-		m_pTex = ResMgr::GetInst()->TexLoad(L"Robber3_Left", L"Texture\\Robber4_Left.bmp");
+		m_pTex = ResMgr::GetInst()->TexLoad(L"Robber4_Left", L"Texture\\Robber4_Left.bmp");
 	}
 }

@@ -23,10 +23,10 @@ enum class KEY_TYPE
 enum class OBJECT_GROUP
 {
 	DEFAULT,
+	BACKGROUND,
 	PLAYER,
 	BULLET,
 	MONSTER,
-	BACKGROUND,
 	END = 30
 };
 
