@@ -4,6 +4,10 @@
 #include "Scene.h"
 #include "SceneMgr.h"
 #include "Object.h"
+#include "Robber1.h"
+#include "Robber2.h"
+#include "Robber3.h"
+#include "Robber4.h"
 
 void MonsterMgr::SetPlayerObj(Player* pObj)
 {
@@ -33,14 +37,41 @@ void MonsterMgr::Update()
 	{
 		currentTime = 0;
 
+		Monster* pMonster;
+
+		int random = rand() % 10;
+		if (random > 6)
+		{
+			pMonster = new Robber1;
+			pMonster->SetKind(MONSTER_KIND::NORMAL1);
+			pMonster->SetStat(enemyHp, enemyAttack);
+		}
+		else if (random > 3)
+		{
+			pMonster = new Robber2;
+			pMonster->SetKind(MONSTER_KIND::NORMAL2); 
+			pMonster->SetStat(enemyHp, enemyAttack);
+		}
+		else if (random > 0)
+		{
+			pMonster = new Robber3;
+			pMonster->SetKind(MONSTER_KIND::NORMAL3);
+			pMonster->SetStat(enemyHp, enemyAttack);
+		}
+		else
+		{
+			pMonster = new Robber4;
+			pMonster->SetKind(MONSTER_KIND::BOSS);
+			pMonster->SetStat(enemyHp, enemyAttack);
+		}
+
 		int monsterScale = 10;
-		Monster* pMonster = new Monster;
-		pMonster->SetTag(TAG::ENEMY);
+		TAG monsterTag = TAG::ENEMY;
+		pMonster->SetTag(monsterTag);
 		pMonster->SetPos(SpawnVec2());
 		pMonster->SetScale(Vec2(monsterScale, monsterScale));
 		pMonster->SetCenterPos(pMonster->GetPos());
 		pMonster->SetPlayerObj(playerObj);
-		pMonster->SetStat(enemyHp, enemyAttack);
 		pMonster->SetMoveDis(10);
 		SceneMgr::GetInst()->GetCurScene()->AddObject(pMonster, OBJECT_GROUP::MONSTER);
 	}

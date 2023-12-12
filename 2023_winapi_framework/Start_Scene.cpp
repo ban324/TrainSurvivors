@@ -8,8 +8,15 @@
 #include "CollisionMgr.h"
 #include "ResMgr.h"
 #include "MonsterMgr.h"
+#include "Introbackground.h"
+
 void Start_Scene::Init()
 {
+	Introbackground* bObj = new Introbackground(ResMgr::GetInst()->TexLoad(L"Background", L"Texture\\Background.bmp"));
+	bObj->SetPos((Vec2({ Core::GetInst()->GetResolution().x / 2 - 1000, Core::GetInst()->GetResolution().y / 2 - 400 })));
+	bObj->SetScale(Vec2(100.f, 100.f));
+	AddObject(bObj, OBJECT_GROUP::BACKGROUND);
+
 	Player* pObj = new Player;
 	pObj->SetPos((Vec2({Core::GetInst()->GetResolution().x /2, Core::GetInst()->GetResolution().y / 2})));
 	pObj->SetScale(Vec2(100.f,100.f));
@@ -47,6 +54,7 @@ void Start_Scene::Init()
 
 	// 충돌체크해야되는것들을 설정하자.
 	CollisionMgr::GetInst()->CheckGroup(OBJECT_GROUP::BULLET, OBJECT_GROUP::MONSTER);
+	CollisionMgr::GetInst()->CheckGroup(OBJECT_GROUP::PLAYER, OBJECT_GROUP::MONSTER);
 }
 
 void Start_Scene::Update()

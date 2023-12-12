@@ -68,6 +68,9 @@
     <Filter Include="Engine\03. Manager\MonsterMgr">
       <UniqueIdentifier>{2e460c0b-c177-4c27-b5f4-870adca5f53e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Engine\04. Object\MainObject\MonstersObject">
+      <UniqueIdentifier>{48ef2541-2811-46d7-9c22-d798a2069e0e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -172,8 +175,21 @@
     <ClInclude Include="MachineGun.h" />
     <ClInclude Include="Projectile.h" />
     <ClInclude Include="Weapon.h" />
-    <ClInclude Include="Turret.h" />
-    <ClInclude Include="Cactus.h" />
+    <ClInclude Include="Robber1.h">
+      <Filter>Engine\04. Object\MainObject\MonstersObject</Filter>
+    </ClInclude>
+    <ClInclude Include="Robber2.h">
+      <Filter>Engine\04. Object\MainObject\MonstersObject</Filter>
+    </ClInclude>
+    <ClInclude Include="Robber3.h">
+      <Filter>Engine\04. Object\MainObject\MonstersObject</Filter>
+    </ClInclude>
+    <ClInclude Include="Robber4.h">
+      <Filter>Engine\04. Object\MainObject\MonstersObject</Filter>
+    </ClInclude>
+    <ClInclude Include="Gameover_Scene.h">
+      <Filter>Engine\05. Scene\MainScene</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="2023_winapi_framework.rc">
@@ -273,7 +289,20 @@
     <ClCompile Include="MachineGun.cpp" />
     <ClCompile Include="Projectile.cpp" />
     <ClCompile Include="Weapon.cpp" />
-    <ClCompile Include="Turret.cpp" />
-    <ClCompile Include="Cactus.cpp" />
+    <ClCompile Include="Robber1.cpp">
+      <Filter>Engine\04. Object\MainObject\MonstersObject</Filter>
+    </ClCompile>
+    <ClCompile Include="Robber2.cpp">
+      <Filter>Engine\04. Object\MainObject\MonstersObject</Filter>
+    </ClCompile>
+    <ClCompile Include="Robber3.cpp">
+      <Filter>Engine\04. Object\MainObject\MonstersObject</Filter>
+    </ClCompile>
+    <ClCompile Include="Robber4.cpp">
+      <Filter>Engine\04. Object\MainObject\MonstersObject</Filter>
+    </ClCompile>
+    <ClCompile Include="Gameover_Scene.cpp">
+      <Filter>Engine\05. Scene\MainScene</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

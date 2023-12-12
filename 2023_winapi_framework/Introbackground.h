@@ -6,7 +6,7 @@ class Introbackground :
     public Object
 {
 public:
-    Introbackground();
+    Introbackground(Texture* tex);
     ~Introbackground();
 public:
     void Update() override;

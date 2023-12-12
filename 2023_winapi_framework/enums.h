@@ -23,10 +23,10 @@ enum class KEY_TYPE
 enum class OBJECT_GROUP
 {
 	DEFAULT,
+	BACKGROUND,
 	PLAYER,
 	BULLET,
 	MONSTER,
-	BACKGROUND,
 	END = 30
 };
 
@@ -55,4 +55,12 @@ enum class TAG
 	PLYAER,
 	ENEMY,
 	WEAPON
+};
+
+enum class MONSTER_KIND
+{
+	NORMAL1,
+	NORMAL2,
+	NORMAL3,
+	BOSS,
 };

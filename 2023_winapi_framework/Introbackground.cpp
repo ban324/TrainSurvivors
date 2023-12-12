@@ -8,16 +8,16 @@
 #include "Texture.h"
 #include "PathMgr.h"
 #include "ResMgr.h"
-Introbackground::Introbackground()
-	: m_pTex(nullptr)
+Introbackground::Introbackground(Texture* tex)
+	: m_pTex(tex)
 {
-	m_pTex = ResMgr::GetInst()->TexLoad(L"IntroBackground", L"Texture\\demobackground.bmp");
 	//m_pTex = ResMgr::GetInst()->TexLoad(L"Player", L"plane.bmp");
 }
 Introbackground::~Introbackground()
 {
 	
 }
+
 void Introbackground::Update()
 {
 	Vec2 vPos = GetPos();
