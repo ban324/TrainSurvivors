@@ -71,6 +71,9 @@
     <Filter Include="Engine\04. Object\MainObject\MonstersObject">
       <UniqueIdentifier>{48ef2541-2811-46d7-9c22-d798a2069e0e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Engine\03. Manager\LevelMgr">
+      <UniqueIdentifier>{60458696-4d3a-4c9c-9801-aec75ab7a6a8}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -190,6 +193,9 @@
     <ClInclude Include="Gameover_Scene.h">
       <Filter>Engine\05. Scene\MainScene</Filter>
     </ClInclude>
+    <ClInclude Include="LevelMgr.h">
+      <Filter>Engine\03. Manager\LevelMgr</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="2023_winapi_framework.rc">
@@ -303,6 +309,9 @@
     </ClCompile>
     <ClCompile Include="Gameover_Scene.cpp">
       <Filter>Engine\05. Scene\MainScene</Filter>
+    </ClCompile>
+    <ClCompile Include="LevelMgr.cpp">
+      <Filter>Engine\03. Manager\LevelMgr</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

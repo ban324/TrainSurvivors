@@ -185,6 +185,7 @@
     <ClInclude Include="Introbackground.h" />
     <ClInclude Include="Intro_Scene.h" />
     <ClInclude Include="KeyMgr.h" />
+    <ClInclude Include="LevelMgr.h" />
     <ClInclude Include="MachineGun.h" />
     <ClInclude Include="Monster.h" />
     <ClInclude Include="MonsterMgr.h" />
@@ -226,6 +227,7 @@
     <ClCompile Include="Introbackground.cpp" />
     <ClCompile Include="Intro_Scene.cpp" />
     <ClCompile Include="KeyMgr.cpp" />
+    <ClCompile Include="LevelMgr.cpp" />
     <ClCompile Include="MachineGun.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Monster.cpp" />
