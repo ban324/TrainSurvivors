@@ -1,6 +1,7 @@
 #pragma once
 #include"Object.h"
 #include "Player.h"
+class Projectile;
 class Weapon
 	:public Object
 {
@@ -9,6 +10,9 @@ public:
 	virtual void Render(HDC _dc);
 public:
 	Player * owner;
+public:
+	vector<Projectile*> vecProjectiles;
+
 public:
 	float cooltime;
 	float power;

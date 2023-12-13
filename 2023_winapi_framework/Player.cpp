@@ -13,6 +13,7 @@
 #include "Animator.h"
 #include"MachineGun.h"
 #include "Animation.h"
+#include "Turret.h"
 #include "MonsterMgr.h"
 Player::Player()
 	: m_pTex(nullptr),
@@ -24,6 +25,7 @@ Player::Player()
 	maxHP(10),
 	currentHP(maxHP)
 {
+	dir = Vec2(1, 0);
 	//m_pTex = new Texture;
 	//wstring strFilePath = PathMgr::GetInst()->GetResPath();
 	//strFilePath += L"Texture\\plane.bmp";
@@ -41,21 +43,21 @@ Player::Player()
 	GetCollider()->SetScale(Vec2(128.f,128.f));
 	//GetCollider()->SetOffSetPos(Vec2(50.f,0.f));
 	GetAnimator()->PlayAnim(L"Train_Right", true);
-	//// ¿ÀÇÁ¼Â °Çµå¸®±â
+	//// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Çµå¸®ï¿½ï¿½
 	//Animation* pAnim = GetAnimator()->FindAnim(L"Jiwoo_Front");
-	//// ÇÏ³ª¸¸
+	//// ï¿½Ï³ï¿½ï¿½ï¿½
 	//pAnim->SetFrameOffset(0, Vec2(0.f, 20.f));
-
-	//// ÇÁ·¹ÀÓ ´Ù 
+	
+	//// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ 
 	//for (size_t i = 0; i < pAnim->GetMaxFrame(); ++i)
 	//	pAnim->SetFrameOffset(i, Vec2(0.f, 20.f));
 
-	MachineGun* mcg = new MachineGun();
+	Turret* mcg = new Turret();
 	if (mcg)
 	{
 		mcg->bulletSize = 50.f;
 		mcg->cooltime = 1.f;
-		mcg->duration - 5.f;
+		mcg->duration = 5.f;
 		mcg->projectileCnt = 1;
 		mcg->power = 1.f;
 		mcg->SetPos(GetPos());;
@@ -117,29 +119,29 @@ void Player::Render(HDC _dc)
 	Vec2 vScale = GetScale();
 	int Width = m_pTex->GetWidth();
 	int Height = m_pTex->GetHeight();
-	//// 1. ±âº» ¿Å±â±â
+	//// 1. ï¿½âº» ï¿½Å±ï¿½ï¿½
 	//BitBlt(_dc
 	//	,(int)(vPos.x - vScale.x /2)
 	//	,(int)(vPos.y - vScale.y /2)
 	//	, Width,Height, m_pTex->GetDC()
 	//	,0,0,SRCCOPY);
 
-	//// 2. »ö»ó °È¾î³»±â
+	//// 2. ï¿½ï¿½ï¿½ï¿½ ï¿½È¾î³»ï¿½ï¿½
 	//TransparentBlt(_dc
 	//	, (int)(vPos.x - vScale.x / 2)
 	//	, (int)(vPos.y - vScale.y / 2)
 	//	, Width, Height, m_pTex->GetDC()
 	//	, 0, 0, Width,Height, RGB(255,0,255));
 
-	//// 3. È®´ë ¹× Ãà¼Ò
+	//// 3. È®ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½
 	//StretchBlt(_dc
 	//	, (int)(vPos.x - vScale.x / 2)
 	//	, (int)(vPos.y - vScale.y / 2)
 	//	, Width ,Height, m_pTex->GetDC()
 	//	, 0, 0, Width, Height, SRCCOPY);
 
-	// 4. È¸Àü
-	// »ï°¢ÇÔ¼ö, È¸ÀüÇà·Ä
+	// 4. È¸ï¿½ï¿½
+	// ï¿½ï°¢ï¿½Ô¼ï¿½, È¸ï¿½ï¿½ï¿½ï¿½ï¿½
 	//Plgblt(_dc
 	//	, (int)(vPos.x - vScale.x / 2)
 	//	, (int)(vPos.y - vScale.y / 2)

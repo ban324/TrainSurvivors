@@ -1,5 +1,5 @@
 #include "pch.h"
-#include "MachineGun.h"
+#include "Cactus.h"
 #include "TimeMgr.h"
 #include "SceneMgr.h"
 #include "Scene.h"
@@ -7,37 +7,40 @@
 #include "Projectile.h"
 #include "ResMgr.h"
 #include "Collider.h"
-MachineGun::MachineGun()
+Cactus::Cactus()
 	:m_projectileTex(nullptr),
 	_currentTime(0.f)
 {
 	m_projectileTex = ResMgr::GetInst()->TexLoad(L"MachineGunProjectile", L"Texture\\Projectile\\MachineGunProjectile.bmp");
 }
 
-MachineGun::~MachineGun()
+Cactus::~Cactus()
 {
 }
-void MachineGun::Update()
+void Cactus::Update()
 {
 	_currentTime += fDT;
 	SetPos(owner->GetPos());
 	if (_currentTime >= cooltime)
 	{
-		std::shared_ptr<Scene> scene =  SceneMgr::GetInst()->GetCurScene();
+		std::shared_ptr<Scene> scene = SceneMgr::GetInst()->GetCurScene();
 		for (int i = 0; i < projectileCnt; ++i)
 		{
-			Projectile * proj = new Projectile();
+			Projectile* proj = new Projectile();
 			proj->SetTexutre(m_projectileTex);
 			proj->SetSpeed(_bulletSpeed);
 			proj->SetPos(GetPos());
-			Vec2 dir = owner->dir;
+			Vec2 dir = scene->GetProximateDir();
+			dir = dir.Normalize();
+
 			proj->SetTag(TAG::WEAPON);
 			proj->SetDir(dir);
 			proj->SetScale(Vec2(20.f, 20.f));
 			proj->owner = this;
 			proj->power = power;
 			proj->SetDuration(duration);
-			proj->GetCollider()->SetScale(Vec2(20.f,20.f));
+			proj->isCactus = true;
+			proj->GetCollider()->SetScale(Vec2(20.f, 20.f));
 			vecProjectiles.push_back(proj);
 
 		}
@@ -49,7 +52,7 @@ void MachineGun::Update()
 	}
 }
 
-void MachineGun::Render(HDC _dc)
+void Cactus::Render(HDC _dc)
 {
 	for (auto iter = vecProjectiles.begin(); iter != vecProjectiles.end(); ++iter)
 	{
