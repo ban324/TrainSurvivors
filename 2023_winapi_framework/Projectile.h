@@ -11,6 +11,7 @@ public:
 public:
 	virtual void Update()override;
 	virtual void Render(HDC _Dc)override;
+	void EnterCollision(Collider* _pOther) override;
 public:
 	Weapon * owner;
 public:

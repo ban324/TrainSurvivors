@@ -60,6 +60,8 @@ void MachineGun::Render(HDC _dc)
 		}
 		else
 		{
+			std::shared_ptr<Scene> scene = SceneMgr::GetInst()->GetCurScene();
+			scene->EraseObject(OBJECT_GROUP::BULLET, (*iter));
 			iter = vecProjectiles.erase(find(vecProjectiles.begin(), vecProjectiles.end(), *iter));
 		}
 	}

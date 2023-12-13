@@ -15,6 +15,7 @@
 #include "Animation.h"
 #include "Turret.h"
 #include "MonsterMgr.h"
+#include "Cactus.h"
 Player::Player()
 	: m_pTex(nullptr),
 	speed(100.f),

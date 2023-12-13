@@ -29,6 +29,7 @@ void Projectile::Update()
 	vPos.x += GetDir().x * fDT * 200;
 	vPos.y += GetDir().y * fDT * 200;
 	SetPos(vPos);
+	isCactus;
 	if (_curLT >= _lifeTime)
 	{
 		if (find(owner->vecProjectiles.begin(), owner->vecProjectiles.end(), this) != owner->vecProjectiles.end() )
@@ -46,11 +47,25 @@ void Projectile::Render(HDC _Dc)
 	int Width = m_pTex->GetWidth();
 	int Height = m_pTex->GetHeight();
 
-	Component_Render(_Dc);
 	TransparentBlt(_Dc
 	, (int)(vpos.x - vscale.x / 2)
 	, (int)(vpos.y - vscale.y / 2)
 	, vscale.x, vscale.y, m_pTex->GetDC()
 	, 0, 0, Width,Height, RGB(255,0,255));
 
+	Component_Render(_Dc);
+}
+
+void Projectile::EnterCollision(Collider* _pOther)
+{
+	if (isCactus)
+	{
+		if ((*_pOther->GetObj()->GetTag()) == TAG::ENEMY)
+		{
+			Vec2 dir = GetDir();
+			dir.x *= -1;
+			dir.y *= -1;
+			SetDir(dir);
+		}
+	}
 }
