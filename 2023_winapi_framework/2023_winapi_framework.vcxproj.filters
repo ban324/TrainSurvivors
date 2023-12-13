@@ -74,6 +74,9 @@
     <Filter Include="Engine\03. Manager\LevelMgr">
       <UniqueIdentifier>{60458696-4d3a-4c9c-9801-aec75ab7a6a8}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Engine\04. Object\MainObject\UIObject">
+      <UniqueIdentifier>{531aa1bb-b0bc-486b-b4c2-f40a07ae5bf1}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -196,6 +199,11 @@
     <ClInclude Include="LevelMgr.h">
       <Filter>Engine\03. Manager\LevelMgr</Filter>
     </ClInclude>
+    <ClInclude Include="Cactus.h" />
+    <ClInclude Include="Turret.h" />
+    <ClInclude Include="UpgradeWindow.h">
+      <Filter>Engine\04. Object\MainObject\UIObject</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="2023_winapi_framework.rc">
@@ -312,6 +320,11 @@
     </ClCompile>
     <ClCompile Include="LevelMgr.cpp">
       <Filter>Engine\03. Manager\LevelMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="Cactus.cpp" />
+    <ClCompile Include="Turret.cpp" />
+    <ClCompile Include="UpgradeWindow.cpp">
+      <Filter>Engine\04. Object\MainObject\UIObject</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -9,6 +9,9 @@ private://변수
 	int level;
 	int experience;
 	int currentExperience;
+	UpgradeWindow* windowObj1;
+	UpgradeWindow* windowpObj2;
+	UpgradeWindow* windowpObj3;
 public://함수
 	//패널 띄우기
 	void UpgradePanelUp();

@@ -9,6 +9,7 @@
 #include "ResMgr.h"
 #include "MonsterMgr.h"
 #include "Introbackground.h"
+#include "LevelMgr.h"
 
 void Start_Scene::Init()
 {
@@ -25,6 +26,8 @@ void Start_Scene::Init()
 
 	MonsterMgr::GetInst()->SetPlayerObj(pObj);
 	MonsterMgr::GetInst()->StartSpawnMonster();
+
+	LevelMgr::GetInst()->UpgradePanelUp();
 
 	// 몬스터 세팅 마구마구 배치를 해봅시다.
 
