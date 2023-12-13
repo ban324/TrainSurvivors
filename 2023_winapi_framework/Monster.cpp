@@ -98,11 +98,7 @@ void Monster::EnterCollision(Collider* _pOther)
 	TAG* tag = pOtherObj->GetTag();
 	if ( *tag == TAG::WEAPON)
 	{
-		// 삭제처리해주면돼.
-		Object* pModifiedObj = const_cast<Object*>(pOtherObj);
-		EventMgr::GetInst()->DeleteObject(pModifiedObj);
-
-		m_iHp--;
+		m_iHp -= 1;
 		if(m_iHp<=0)
 			EventMgr::GetInst()->DeleteObject(this);
 	}
@@ -121,7 +117,7 @@ void Monster::StayCollision(Collider* _pOther)
 {
 	const Object* pOtherObj = _pOther->GetObj();
 	TAG* tag = pOtherObj->GetTag();
-	if (time > m_fDelay)
+	if (time > m_fDelay && *tag == TAG::PLYAER)
 	{
 		//공격
 		playerObj->currentHP -= m_fAttack;
