@@ -7,6 +7,7 @@
 #include "Projectile.h"
 #include "ResMgr.h"
 #include "Collider.h"
+#include "EventMgr.h"
 MachineGun::MachineGun()
 	:m_projectileTex(nullptr),
 	_currentTime(0.f)
@@ -39,7 +40,8 @@ void MachineGun::Update()
 			proj->SetDuration(duration);
 			proj->GetCollider()->SetScale(Vec2(20.f,20.f));
 			vecProjectiles.push_back(proj);
-
+			scene->AddObject(proj, OBJECT_GROUP::BULLET);
+			
 		}
 		_currentTime = 0;
 	}
@@ -60,9 +62,9 @@ void MachineGun::Render(HDC _dc)
 		}
 		else
 		{
-			std::shared_ptr<Scene> scene = SceneMgr::GetInst()->GetCurScene();
-			scene->EraseObject(OBJECT_GROUP::BULLET, (*iter));
-			iter = vecProjectiles.erase(find(vecProjectiles.begin(), vecProjectiles.end(), *iter));
+			assert(*iter);
+			EventMgr::GetInst()->DeleteObject(*iter);
+			iter = vecProjectiles.erase(iter);
 		}
 	}
 }

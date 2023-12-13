@@ -7,6 +7,7 @@
 #include "Projectile.h"
 #include "ResMgr.h"
 #include "Collider.h"
+#include "EventMgr.h"
 Turret::Turret()
 	:m_projectileTex(nullptr),
 	_currentTime(0.f)
@@ -63,9 +64,9 @@ void Turret::Render(HDC _dc)
 		}
 		else
 		{
-			std::shared_ptr<Scene> scene = SceneMgr::GetInst()->GetCurScene();
-			scene->EraseObject(OBJECT_GROUP::BULLET, (*iter));
-			iter = vecProjectiles.erase(find(vecProjectiles.begin(), vecProjectiles.end(), *iter));
+			assert(*iter);
+			EventMgr::GetInst()->DeleteObject(*iter);
+			iter = vecProjectiles.erase(iter);
 		}
 	}
 }

@@ -41,7 +41,7 @@ Player::Player()
 		Vec2(128.f, 128.f), Vec2(128.f, 0.f), 8, 0.05f);
 	//m_pTex = ResMgr::GetInst()->TexLoad(L"jiwoo", L"Texture\\jiwoo.bmp");
 	CreateCollider();
-	GetCollider()->SetScale(Vec2(128.f,128.f));
+	GetCollider()->SetScale(Vec2(60.f,60.f));
 	//GetCollider()->SetOffSetPos(Vec2(50.f,0.f));
 	GetAnimator()->PlayAnim(L"Train_Right", true);
 	//// ������ �ǵ帮��
@@ -53,17 +53,44 @@ Player::Player()
 	//for (size_t i = 0; i < pAnim->GetMaxFrame(); ++i)
 	//	pAnim->SetFrameOffset(i, Vec2(0.f, 20.f));
 
-	Turret* mcg = new Turret();
+	Cactus* mcg = new Cactus();
 	if (mcg)
 	{
-		mcg->bulletSize = 50.f;
-		mcg->cooltime = 1.f;
+		mcg->bulletSize = 90.f;
+		mcg->cooltime = 0.5f;
 		mcg->duration = 5.f;
 		mcg->projectileCnt = 1;
-		mcg->power = 1.f;
+		mcg->power = 5.f;
 		mcg->SetPos(GetPos());;
 		mcg->owner = this;
 		weapons.push_back(mcg);
+	}
+	MachineGun* mcg2 = new MachineGun();
+	if (mcg2)
+	{
+		mcg2->bulletSize = 50;
+		mcg2->cooltime = 0.5f;
+		mcg2->duration = 5.f;
+		mcg2->projectileCnt = 1;
+		mcg2->power = 5.f;
+		mcg2->SetPos(GetPos());;
+		mcg2->owner = this;
+		weapons.push_back(mcg2);
+
+	}
+	Turret* tur = new Turret();
+	if (tur)
+	{
+		tur->bulletSize = 50;
+		tur->cooltime = 0.5f;
+		tur->duration = 5.f;
+		tur->projectileCnt = 1;
+		tur->power = 5.f;
+		tur->SetPos(GetPos());;
+		tur->owner = this;
+		weapons.push_back(tur);
+
+
 	}
 }
 Player::~Player()

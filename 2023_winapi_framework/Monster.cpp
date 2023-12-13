@@ -7,6 +7,7 @@
 #include "SceneMgr.h"
 #include "ResMgr.h"
 #include "Texture.h"
+#include "Projectile.h"
 Monster::Monster()
 	: playerObj(nullptr)
 	, m_fSpeed(100.f)
@@ -98,7 +99,13 @@ void Monster::EnterCollision(Collider* _pOther)
 	TAG* tag = pOtherObj->GetTag();
 	if ( *tag == TAG::WEAPON)
 	{
-		m_iHp -= 1;
+		const Projectile* proj = dynamic_cast<const Projectile*>(_pOther->GetObj());
+		if (proj)
+		{
+			m_iHp -= proj->power;
+
+		}
+
 		if(m_iHp<=0)
 			EventMgr::GetInst()->DeleteObject(this);
 	}

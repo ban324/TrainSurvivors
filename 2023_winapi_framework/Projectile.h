@@ -12,6 +12,7 @@ public:
 	virtual void Update()override;
 	virtual void Render(HDC _Dc)override;
 	void EnterCollision(Collider* _pOther) override;
+	void ExitCollision(Collider* _pOther) override;
 public:
 	Weapon * owner;
 public:
@@ -25,6 +26,8 @@ public:
 public:
 	int power;
 	bool isCactus;
+	bool bounded = false;
+	int boundCnt = 0;;
 private:
 	float _lifeTime = 3.f;
 	float _curLT = 0;

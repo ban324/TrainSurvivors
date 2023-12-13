@@ -64,7 +64,12 @@ void Scene::Release()
 
 void Scene::EraseObject(OBJECT_GROUP group, Object * obj)
 {
-	m_vecObj[(UINT)group].erase(find(m_vecObj[(UINT)group].begin(), m_vecObj[(UINT)group].end(), obj));
+	assert(obj);
+	if (m_vecObj[(UINT)group].end() != find(m_vecObj[(UINT)group].begin(), m_vecObj[(UINT)group].end(), obj))
+	{
+		m_vecObj[(UINT)group].erase(find(m_vecObj[(UINT)group].begin(), m_vecObj[(UINT)group].end(), obj));
+
+	}
 }
 
 Vec2 Scene::GetProximateDir()
