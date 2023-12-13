@@ -5,6 +5,7 @@
 #include "SceneMgr.h"
 #include "PathMgr.h"
 #include "ResMgr.h"
+#include "LevelMgr.h"
 #include "CollisionMgr.h"
 #include "EventMgr.h"
 #include "MonsterMgr.h"
@@ -15,7 +16,7 @@ bool Core::Init(HWND _hWnd, POINT _ptResolution)
 	m_ptResolution = _ptResolution;
 	m_hbackDC = 0;
 	m_hbackbit = 0;
-
+	
 
 	// 더블버퍼링
 	m_hDC = GetDC(m_hWnd);	
@@ -66,6 +67,7 @@ void Core::Update()
 	SceneMgr::GetInst()->Update();
 	CollisionMgr::GetInst()->Update();
 	MonsterMgr::GetInst()->Update();
+	LevelMgr::GetInst()->Update();
 //	Vec2 vPos = m_obj.GetPos();
 //
 ////	if (GetAsyncKeyState(VK_LEFT) & 0x8000)

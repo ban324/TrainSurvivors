@@ -98,6 +98,10 @@ void Monster::EnterCollision(Collider* _pOther)
 	TAG* tag = pOtherObj->GetTag();
 	if ( *tag == TAG::WEAPON)
 	{
+		// 昏力贸府秦林搁蹬.
+		/*Object* pModifiedObj = const_cast<Object*>(pOtherObj);
+		EventMgr::GetInst()->DeleteObject(pModifiedObj);*/
+
 		m_iHp -= 1;
 		if(m_iHp<=0)
 			EventMgr::GetInst()->DeleteObject(this);

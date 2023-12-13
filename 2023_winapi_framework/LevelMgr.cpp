@@ -6,29 +6,57 @@
 #include "KeyMgr.h"
 #include "UpgradeWindow.h"
 #include "Core.h"
+#include "EventMgr.h"
 
-void LevelMgr::UpgradePanelUp()
+void LevelMgr::UpgradePanelUp(Weapon* playerWeapons[])
 {
-	windowObj1 = new UpgradeWindow;
-	windowObj1->SetPos((Vec2({ Core::GetInst()->GetResolution().x / 2, Core::GetInst()->GetResolution().y / 2 })));
-	windowObj1->SetScale(Vec2(300.f, 400.f));
-	//pObj->SetTag(TAG::PLYAER);
-	SceneMgr::GetInst()->GetCurScene()->AddObject(windowObj1, OBJECT_GROUP::UI);
+	isOpen = true;
 
-	if (windowObj1->IsRange(KeyMgr::GetInst()->GetMousePos()))
+	std::set<int> benIndex;
+	for (int i = 0; i < 3; i++)
 	{
+		int weaponIndex = rand() % sizeof(playerWeapons);
+		while (benIndex.find(weaponIndex) != benIndex.end())
+		{
+			weaponIndex = rand() % sizeof(playerWeapons);
+		}
+		benIndex.insert(weaponIndex);
 
+		windowObj[i] = new UpgradeWindow(playerWeapons[weaponIndex]);
+		windowObj[i]->SetPos((Vec2({ Core::GetInst()->GetResolution().x / 2 - (i * 500) + 300, Core::GetInst()->GetResolution().y / 2 })));
+		windowObj[i]->SetScale(Vec2(300.f, 400.f));
+		//pObj->SetTag(TAG::PLYAER);
+		SceneMgr::GetInst()->GetCurScene()->AddObject(windowObj[i], OBJECT_GROUP::UI);
+	}
+}
+
+void LevelMgr::Update()
+{
+	if (isOpen)
+	{
+		for (int i = 0; i < 3; i++)  
+		{
+			if (KEY_DOWN(KEY_TYPE::LBUTTON) && windowObj[i]->IsRange(KeyMgr::GetInst()->GetMousePos()))
+			{
+				OnUpgradeBtnClick(i);
+			}
+		}
 	}
 }
 
 void LevelMgr::UpgradePanelDown()
 {
-
+	isOpen = false;
+	for (int i = 0; i < 3; i++)
+	{
+		EventMgr::GetInst()->DeleteObject(windowObj[i]);
+	}
 }
 
-void LevelMgr::OnUpgradeBtnClick()
+void LevelMgr::OnUpgradeBtnClick(int index)
 {
-
+	windowObj[index]->UpgradeWeapon();
+	UpgradePanelDown();
 }
 
 void LevelMgr::RandomWeapon()
