@@ -151,3 +151,13 @@ void Core::Release()
 
 	ResMgr::GetInst()->Release();
 }
+
+HDC& Core::GetBackDC()
+{
+	// 2. ¿¬°á
+	SelectObject(m_hbackDC, m_hbackbit);
+	PatBlt(m_hbackDC, 0, 0, m_ptResolution.x, m_ptResolution.y, WHITENESS);
+	BitBlt(m_hDC, 0, 0, m_ptResolution.x, m_ptResolution.y,
+		m_hbackDC, 0, 0, SRCCOPY);
+	return m_hbackDC;
+}

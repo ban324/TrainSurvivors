@@ -1,7 +1,7 @@
 #pragma once
 #include "define.h"
 #include "pch.h"
-#include <windows.h>
+#include "weapon.h"
 
 class UpgradeWindow;
 class LevelMgr
@@ -23,10 +23,8 @@ public://함수
 	void UpgradePanelDown();
 	//버튼 클릭시
 	void OnUpgradeBtnClick(int index);
-	//랜덤한 무기 선택
-	void RandomWeapon();
 	//무기 업그레이드
-	void UpgradeWeapon();
+	void UpgradeWeapon(int index);
 private://get,set, 반환함수, 기타함수 등등
 	const bool GetOpen() const { return isOpen; }
 	const int GetLevel() const { return level; }

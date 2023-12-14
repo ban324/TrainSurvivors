@@ -25,6 +25,7 @@ void LevelMgr::UpgradePanelUp(Weapon* playerWeapons[])
 		windowObj[i] = new UpgradeWindow(playerWeapons[weaponIndex]);
 		windowObj[i]->SetPos((Vec2({ Core::GetInst()->GetResolution().x / 2 - (i * 500) + 300, Core::GetInst()->GetResolution().y / 2 })));
 		windowObj[i]->SetScale(Vec2(300.f, 400.f));
+		windowObj[i]->ShowText();
 		//pObj->SetTag(TAG::PLYAER);
 		SceneMgr::GetInst()->GetCurScene()->AddObject(windowObj[i], OBJECT_GROUP::UI);
 	}
@@ -55,16 +56,11 @@ void LevelMgr::UpgradePanelDown()
 
 void LevelMgr::OnUpgradeBtnClick(int index)
 {
-	windowObj[index]->UpgradeWeapon();
+	UpgradeWeapon(index);
 	UpgradePanelDown();
 }
 
-void LevelMgr::RandomWeapon()
+void LevelMgr::UpgradeWeapon(int index)
 {
-
-}
-
-void LevelMgr::UpgradeWeapon()
-{
-
+	windowObj[index]->UpgradeWeapon();
 }

@@ -36,7 +36,12 @@ bool UpgradeWindow::IsRange(const POINT mousePoint)
     return false;
 }
 
+void UpgradeWindow::ShowText()
+{
+    Vec2 vPos = GetPos();
+}
+
 void UpgradeWindow::UpgradeWeapon()
 {
-    
+    weapon->Upgrade();
 }

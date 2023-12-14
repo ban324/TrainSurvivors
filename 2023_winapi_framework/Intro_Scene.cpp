@@ -9,10 +9,18 @@
 
 void Intro_Scene::Init()
 {
-	Introbackground* pObj = new Introbackground(ResMgr::GetInst()->TexLoad(L"IntroBackground", L"Texture\\Background.bmp"));
+	/*Introbackground* pObj = new Introbackground(ResMgr::GetInst()->TexLoad(L"IntroBackground", L"Texture\\Background.bmp"));
 	pObj->SetPos((Vec2({ Core::GetInst()->GetResolution().x / 2 - 1000, Core::GetInst()->GetResolution().y / 2 - 400 })));
 	pObj->SetScale(Vec2(100.f, 100.f));
-	AddObject(pObj, OBJECT_GROUP::BACKGROUND);
+	AddObject(pObj, OBJECT_GROUP::BACKGROUND);*/
+
+	/*HDC _dc = Core::GetInst()->GetBackDC();
+	SetTextAlign(_dc, TA_CENTER);
+	SetBkMode(_dc, 0);
+	SelectObject(_dc, ResMgr::GetInst()->GetFont(L"TitleFont"));
+	TextOut(_dc, 750, 200, L"TrainSurvivors", 14);
+	SelectObject(_dc, ResMgr::GetInst()->GetFont(L"SubFont"));
+	TextOut(_dc, 750, 400, L"Press Enter", 11);*/
 
 	//폰트 세팅
 	ResMgr::GetInst()->LoadFont(L"TitleFont", L"Font\\MainFont.ttf", 70);
