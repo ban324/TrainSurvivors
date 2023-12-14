@@ -22,6 +22,20 @@ void TimeMgr::Init()
 
 void TimeMgr::Update()
 {
+	if (theWord)
+	{
+		m_llPrevCount = {};
+		m_llCurCount = {};
+		m_llFrequency = {};
+		m_frameCount = 0;
+		m_fps = 0;
+		m_accFrameTime = 0.f;
+		m_dT = 0;
+		QueryPerformanceCounter(&m_llPrevCount);
+		QueryPerformanceFrequency(&m_llFrequency);
+		return;
+	}
+
 	QueryPerformanceCounter(&m_llCurCount);
 
 	// Delta Time: 한 프레임에 걸린 시간.

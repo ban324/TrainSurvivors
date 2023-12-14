@@ -5,6 +5,7 @@ class TimeMgr
 public:
 	void Init();
 	void Update();
+	void DIO(bool value) { theWord = value; }
 public:
 	const float& GetDT() const { return m_dT; }
 private:
@@ -19,5 +20,6 @@ private:
 	UINT  m_frameCount; // 프레임 호출 체크
 	float m_accFrameTime; // 시간 누적
 
+	bool theWord; //시간을 멈추는지
 };
 

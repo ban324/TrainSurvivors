@@ -10,6 +10,7 @@
 #include "GaugeBar.h"
 #include "weapon.h"
 #include "MonsterMgr.h"
+#include "ResMgr.h"
 
 void LevelMgr::Update()
 {
@@ -17,7 +18,7 @@ void LevelMgr::Update()
 
 	if (isOpen)
 	{
-		for (int i = 0; i < 3; i++)  
+		for (int i = 0; i < 3; i++)
 		{
 			if (KEY_DOWN(KEY_TYPE::LBUTTON) && windowObj[i]->IsRange(KeyMgr::GetInst()->GetMousePos()))
 			{
@@ -37,6 +38,23 @@ void LevelMgr::Update()
 	}
 }
 
+void LevelMgr::Render(HDC _dc)
+{
+	if (!isOpen) return;
+
+	for (int i = 0; i < 3; i++)
+	{
+		SelectObject(_dc, ResMgr::GetInst()->GetFont(L"SubFont"));
+
+		Weapon* ww = windowObj[i]->weapon;
+		//int power = windowObj[i]->weapon->power;
+		/*LPCWSTR name = windowObj[i]->weapon->GetName().c_str();
+		int length = windowObj[i]->weapon->GetName().length();*/
+		//TextOut(_dc, windowObj[i]->GetPos().x, windowObj[i]->GetPos().y, name, length);
+		TextOut(_dc, windowObj[i]->GetPos().x, windowObj[i]->GetPos().y, L"hh", 2);
+	}
+}
+
 void LevelMgr::SettingWeapons(Weapon* weapons[])
 {
 	isRun = true;
@@ -47,8 +65,8 @@ void LevelMgr::SettingWeapons(Weapon* weapons[])
 	//gaugeBar->SetTag(TAG::PLYAER);
 	SceneMgr::GetInst()->GetCurScene()->AddObject(gaugeBar, OBJECT_GROUP::UI);
 
-	levelEx.push_back(100);
-	levelEx.push_back(110);
+	levelEx.push_back(50);
+	levelEx.push_back(50);
 	levelEx.push_back(120);
 	levelEx.push_back(130);
 
@@ -56,10 +74,14 @@ void LevelMgr::SettingWeapons(Weapon* weapons[])
 	gaugeBar->Reset();
 	maxExperience = levelEx[level];
 
-	for (int i = 0; i < sizeof(weapons); i++)
+	playerWeapons.clear();
+	for (int i = 0; weapons[i]->bulletSize != 0; i++)
 	{
+		
 		playerWeapons.push_back(weapons[i]);
 	}
+
+	//ResMgr::GetInst()->LoadFont(L"SubFont", L"Font\\MainFont.ttf", 30);
 }
 
 void LevelMgr::IncreseExperience(int ex)
@@ -69,9 +91,10 @@ void LevelMgr::IncreseExperience(int ex)
 
 void LevelMgr::UpgradePanelUp()
 {
-	isOpen = true;
+	//isOpen = true;
 	level++;
 
+	
 	std::set<int> benIndex;
 	for (int i = 0; i < 3; i++)
 	{
@@ -85,18 +108,20 @@ void LevelMgr::UpgradePanelUp()
 		windowObj[i] = new UpgradeWindow(playerWeapons[weaponIndex]);
 		windowObj[i]->SetPos((Vec2({ Core::GetInst()->GetResolution().x / 2 - (i * 500) + 300, Core::GetInst()->GetResolution().y / 2 })));
 		windowObj[i]->SetScale(Vec2(300.f, 400.f));
-		windowObj[i]->ShowText();
 		//pObj->SetTag(TAG::PLYAER);
 		SceneMgr::GetInst()->GetCurScene()->AddObject(windowObj[i], OBJECT_GROUP::UI);
 	}
+	isOpen = true;
+	TimeMgr::GetInst()->DIO(true);
 }
 
 void LevelMgr::UpgradePanelDown()
 {
+	TimeMgr::GetInst()->DIO(false);
 	isOpen = false;
 	for (int i = 0; i < 3; i++)
 	{
-		MonsterMgr::GetInst()->UpgradeSpawn();
+		//MonsterMgr::GetInst()->UpgradeSpawn();
 		EventMgr::GetInst()->DeleteObject(windowObj[i]);
 	}
 }

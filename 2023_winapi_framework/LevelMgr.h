@@ -20,6 +20,7 @@ private://변수
 	vector<Weapon*> playerWeapons;
 public://함수
 	void Update();
+	void Render(HDC _dc);
 	//미리 플레이어 무기 가져오고
 	void SettingWeapons(Weapon* weapons[]);
 	//경험치 증가
