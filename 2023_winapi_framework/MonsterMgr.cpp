@@ -24,7 +24,7 @@ void MonsterMgr::StopSpawnMonster()
 	isSpawning = false;
 }
 
-void MonsterMgr::UpgradeSpawn()//아이템 고를때마다/다 고를때 호출
+void MonsterMgr::UpgradeSpawn()//아이템 고를때마다 고를때 호출
 {
 	spawnTime -= 0.1f;
 	enemyHp += 1.f;
@@ -44,25 +44,25 @@ void MonsterMgr::Update()
 		{
 			pMonster = new Robber1;
 			pMonster->SetKind(MONSTER_KIND::NORMAL1);
-			pMonster->SetStat(enemyHp, enemyAttack);
+			pMonster->SetStat(enemyHp, enemyAttack, 50);
 		}
 		else if (random > 3)
 		{
 			pMonster = new Robber2;
 			pMonster->SetKind(MONSTER_KIND::NORMAL2); 
-			pMonster->SetStat(enemyHp, enemyAttack);
+			pMonster->SetStat(enemyHp, enemyAttack, 50);
 		}
 		else if (random > 0)
 		{
 			pMonster = new Robber3;
 			pMonster->SetKind(MONSTER_KIND::NORMAL3);
-			pMonster->SetStat(enemyHp, enemyAttack);
+			pMonster->SetStat(enemyHp, enemyAttack, 50);
 		}
 		else
 		{
 			pMonster = new Robber4;
 			pMonster->SetKind(MONSTER_KIND::BOSS);
-			pMonster->SetStat(enemyHp, enemyAttack);
+			pMonster->SetStat(enemyHp, enemyAttack, 60);
 		}
 
 		int monsterScale = 10;

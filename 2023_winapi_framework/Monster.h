@@ -18,7 +18,9 @@ public:
 public:
 	void SetPlayerObj(Player* pObj);
 	void SetSpeed(float _f) { m_fSpeed = _f; }
-	void SetStat(float _hp, float _attack) { m_iHp = _hp; m_fAttack = _attack; }
+	void SetStat(float _hp, float _attack, float _ex) {
+		m_iHp = _hp; m_fAttack = _attack; m_fEx = _ex;
+	}
 	void SetCenterPos(Vec2 _vPos) 
 	{ 
 		m_vCenterPos = _vPos;
@@ -41,6 +43,7 @@ protected:
 	float m_fDirX; // 방향(-1: 왼쪽, 1: 오른쪽)
 	float m_fDirY; // 방향(-1: 왼쪽, 1: 오른쪽)
 	int   m_iHp; // 체력
+	int	  m_fEx;
 	int	  time;
 	Texture* m_pTex;
 };

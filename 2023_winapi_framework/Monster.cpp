@@ -18,6 +18,7 @@ Monster::Monster()
 	, m_fDirX(0.f)
 	, m_fDirY(0.f)
 	, m_iHp(5)
+	, m_fEx(50)
 	, time(0)
 	, m_pTex(nullptr)
 {
@@ -106,7 +107,7 @@ void Monster::EnterCollision(Collider* _pOther)
 		m_iHp -= 1;
 		if (m_iHp <= 0)
 		{
-			LevelMgr::GetInst()->IncreseExperience(10);
+			LevelMgr::GetInst()->IncreseExperience(m_fEx);
 			EventMgr::GetInst()->DeleteObject(this);
 		}
 	}

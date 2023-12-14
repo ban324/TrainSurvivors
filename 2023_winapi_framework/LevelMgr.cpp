@@ -9,6 +9,7 @@
 #include "EventMgr.h"
 #include "GaugeBar.h"
 #include "weapon.h"
+#include "MonsterMgr.h"
 
 void LevelMgr::Update()
 {
@@ -41,7 +42,7 @@ void LevelMgr::SettingWeapons(Weapon* weapons[])
 	isRun = true;
 
 	gaugeBar = new GaugeBar;
-	gaugeBar->SetPos((Vec2({ Core::GetInst()->GetResolution().x / 2, Core::GetInst()->GetResolution().y / 2 })));
+	gaugeBar->SetPos((Vec2({ Core::GetInst()->GetResolution().x / 2 - 200, 50 })));
 	gaugeBar->SetScale(Vec2(100.f, 100.f));
 	//gaugeBar->SetTag(TAG::PLYAER);
 	SceneMgr::GetInst()->GetCurScene()->AddObject(gaugeBar, OBJECT_GROUP::UI);
@@ -95,6 +96,7 @@ void LevelMgr::UpgradePanelDown()
 	isOpen = false;
 	for (int i = 0; i < 3; i++)
 	{
+		MonsterMgr::GetInst()->UpgradeSpawn();
 		EventMgr::GetInst()->DeleteObject(windowObj[i]);
 	}
 }

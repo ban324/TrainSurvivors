@@ -4,7 +4,7 @@
 
 void GaugeBar::SetGauge()
 {
-	SetScale(Vec2(currentExperience, 50));
+	SetScale(Vec2(currentExperience, 30));
 }
 
 void GaugeBar::Reset()
