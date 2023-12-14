@@ -7,6 +7,7 @@
 #include "SceneMgr.h"
 #include "ResMgr.h"
 #include "Texture.h"
+#include "LevelMgr.h"
 Monster::Monster()
 	: playerObj(nullptr)
 	, m_fSpeed(100.f)
@@ -103,8 +104,11 @@ void Monster::EnterCollision(Collider* _pOther)
 		EventMgr::GetInst()->DeleteObject(pModifiedObj);*/
 
 		m_iHp -= 1;
-		if(m_iHp<=0)
+		if (m_iHp <= 0)
+		{
+			LevelMgr::GetInst()->IncreseExperience(10);
 			EventMgr::GetInst()->DeleteObject(this);
+		}
 	}
 	else if (*tag == TAG::PLYAER)
 	{

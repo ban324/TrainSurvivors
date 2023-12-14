@@ -204,6 +204,9 @@
     <ClInclude Include="UpgradeWindow.h">
       <Filter>Engine\04. Object\MainObject\UIObject</Filter>
     </ClInclude>
+    <ClInclude Include="GaugeBar.h">
+      <Filter>Engine\04. Object\MainObject\UIObject</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="2023_winapi_framework.rc">
@@ -324,6 +327,9 @@
     <ClCompile Include="Cactus.cpp" />
     <ClCompile Include="Turret.cpp" />
     <ClCompile Include="UpgradeWindow.cpp">
+      <Filter>Engine\04. Object\MainObject\UIObject</Filter>
+    </ClCompile>
+    <ClCompile Include="GaugeBar.cpp">
       <Filter>Engine\04. Object\MainObject\UIObject</Filter>
     </ClCompile>
   </ItemGroup>

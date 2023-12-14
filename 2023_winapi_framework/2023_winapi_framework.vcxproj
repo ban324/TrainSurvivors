@@ -182,6 +182,7 @@
     <ClInclude Include="framework.h" />
     <ClInclude Include="Gameover_Scene.h" />
     <ClInclude Include="Game_Scene.h" />
+    <ClInclude Include="GaugeBar.h" />
     <ClInclude Include="Introbackground.h" />
     <ClInclude Include="Intro_Scene.h" />
     <ClInclude Include="KeyMgr.h" />
@@ -225,6 +226,7 @@
     <ClCompile Include="EventMgr.cpp" />
     <ClCompile Include="Gameover_Scene.cpp" />
     <ClCompile Include="Game_Scene.cpp" />
+    <ClCompile Include="GaugeBar.cpp" />
     <ClCompile Include="Introbackground.cpp" />
     <ClCompile Include="Intro_Scene.cpp" />
     <ClCompile Include="KeyMgr.cpp" />

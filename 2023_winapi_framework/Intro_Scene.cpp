@@ -9,10 +9,10 @@
 
 void Intro_Scene::Init()
 {
-	/*Introbackground* pObj = new Introbackground(ResMgr::GetInst()->TexLoad(L"IntroBackground", L"Texture\\Background.bmp"));
+	Introbackground* pObj = new Introbackground(ResMgr::GetInst()->TexLoad(L"IntroBackground", L"Texture\\Background.bmp"));
 	pObj->SetPos((Vec2({ Core::GetInst()->GetResolution().x / 2 - 1000, Core::GetInst()->GetResolution().y / 2 - 400 })));
 	pObj->SetScale(Vec2(100.f, 100.f));
-	AddObject(pObj, OBJECT_GROUP::BACKGROUND);*/
+	AddObject(pObj, OBJECT_GROUP::BACKGROUND);
 
 	/*HDC _dc = Core::GetInst()->GetBackDC();
 	SetTextAlign(_dc, TA_CENTER);

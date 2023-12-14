@@ -9,6 +9,7 @@
 #include "CollisionMgr.h"
 #include "EventMgr.h"
 #include "MonsterMgr.h"
+#include "LevelMgr.h"
 bool Core::Init(HWND _hWnd, POINT _ptResolution)
 {
 	// === 변수 초기화 === 

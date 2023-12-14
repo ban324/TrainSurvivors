@@ -16,6 +16,7 @@
 #include "Turret.h"
 #include "MonsterMgr.h"
 #include "Cactus.h"
+#include "LevelMgr.h"
 Player::Player()
 	: m_pTex(nullptr),
 	speed(100.f),
@@ -65,6 +66,8 @@ Player::Player()
 		mcg->owner = this;
 		weapons.push_back(mcg);
 	}
+	Weapon* weapons[1] = {mcg};
+	LevelMgr::GetInst()->SettingWeapons(weapons);
 }
 Player::~Player()
 {
