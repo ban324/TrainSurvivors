@@ -196,6 +196,9 @@
     <ClInclude Include="LevelMgr.h">
       <Filter>Engine\03. Manager\LevelMgr</Filter>
     </ClInclude>
+    <ClInclude Include="Cactus.h" />
+    <ClInclude Include="Turret.h" />
+    <ClInclude Include="BurnWheel.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="2023_winapi_framework.rc">
@@ -313,5 +316,8 @@
     <ClCompile Include="LevelMgr.cpp">
       <Filter>Engine\03. Manager\LevelMgr</Filter>
     </ClCompile>
+    <ClCompile Include="Cactus.cpp" />
+    <ClCompile Include="Turret.cpp" />
+    <ClCompile Include="BurnWheel.cpp" />
   </ItemGroup>
 </Project>

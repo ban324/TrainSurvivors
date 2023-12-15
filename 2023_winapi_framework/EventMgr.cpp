@@ -3,9 +3,14 @@
 #include "Object.h"
 void EventMgr::Update()
 {
+
 	for (size_t i = 0; i < m_vecDead.size(); ++i)
 	{
-		delete m_vecDead[i];
+		if (m_vecDead[i])
+		{
+
+			delete m_vecDead[i];
+		}
 	}
 	m_vecDead.clear();
 

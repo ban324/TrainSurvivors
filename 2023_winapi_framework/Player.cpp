@@ -16,6 +16,7 @@
 #include "Turret.h"
 #include "MonsterMgr.h"
 #include "Cactus.h"
+#include "BurnWheel.h"
 Player::Player()
 	: m_pTex(nullptr),
 	speed(100.f),
@@ -53,7 +54,7 @@ Player::Player()
 	//for (size_t i = 0; i < pAnim->GetMaxFrame(); ++i)
 	//	pAnim->SetFrameOffset(i, Vec2(0.f, 20.f));
 
-	Cactus* mcg = new Cactus();
+	BurnWheel* mcg = new BurnWheel();
 	if (mcg)
 	{
 		mcg->bulletSize = 90.f;
@@ -64,33 +65,6 @@ Player::Player()
 		mcg->SetPos(GetPos());;
 		mcg->owner = this;
 		weapons.push_back(mcg);
-	}
-	MachineGun* mcg2 = new MachineGun();
-	if (mcg2)
-	{
-		mcg2->bulletSize = 50;
-		mcg2->cooltime = 0.5f;
-		mcg2->duration = 5.f;
-		mcg2->projectileCnt = 1;
-		mcg2->power = 5.f;
-		mcg2->SetPos(GetPos());;
-		mcg2->owner = this;
-		weapons.push_back(mcg2);
-
-	}
-	Turret* tur = new Turret();
-	if (tur)
-	{
-		tur->bulletSize = 50;
-		tur->cooltime = 0.5f;
-		tur->duration = 5.f;
-		tur->projectileCnt = 1;
-		tur->power = 5.f;
-		tur->SetPos(GetPos());;
-		tur->owner = this;
-		weapons.push_back(tur);
-
-
 	}
 }
 Player::~Player()

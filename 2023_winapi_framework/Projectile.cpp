@@ -32,7 +32,7 @@ void Projectile::Update()
 	isCactus;
 	if (_curLT >= _lifeTime)
 	{
-			m_IsAlive = false;
+		m_IsAlive = false;
 
 	}
 }
