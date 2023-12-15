@@ -108,8 +108,9 @@ Player::Player()
 		turret->owner = this;
 		turret->SetName(TEXT("Turret"));
 	}
+	vector<Weapon*> weaponVector = { burnWheel, cactus, turret, mcg };
 	Weapon* weaponArr[5] = {burnWheel, cactus, turret, mcg};
-	LevelMgr::GetInst()->SettingWeapons(weaponArr);
+	LevelMgr::GetInst()->SettingWeapons(weaponVector);
 }
 Player::~Player()
 {

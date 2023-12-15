@@ -56,7 +56,7 @@ void LevelMgr::Render(HDC _dc)
 	}
 }
 
-void LevelMgr::SettingWeapons(Weapon* weapons[])
+void LevelMgr::SettingWeapons(vector<Weapon*>& weapons)
 {
 	isRun = true;
 
@@ -66,7 +66,7 @@ void LevelMgr::SettingWeapons(Weapon* weapons[])
 	//gaugeBar->SetTag(TAG::PLYAER);
 	SceneMgr::GetInst()->GetCurScene()->AddObject(gaugeBar, OBJECT_GROUP::UI);
 
-	levelEx.push_back(500);
+	levelEx.push_back(50);
 	levelEx.push_back(50);
 	levelEx.push_back(50);
 	levelEx.push_back(50);
@@ -76,8 +76,8 @@ void LevelMgr::SettingWeapons(Weapon* weapons[])
 	maxExperience = levelEx[level];
 
 	playerWeapons.clear();
-	int size = sizeof(weapons) / sizeof(weapons[0]);
-	for (int i = 0; i < size; i++)
+
+	for (int i = 0; i < weapons.size(); i++)
 	{
 		playerWeapons.push_back(weapons[i]);
 	}
