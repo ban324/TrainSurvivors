@@ -39,8 +39,7 @@ void BurnWheel::Update()
 			proj->SetSpeed(_bulletSpeed);
 			proj->SetPos(GetPos());
 			Vec2 dir = Vec2(0,0);
-
-
+			dir.x = owner->dir.x * -1;
 			proj->SetTag(TAG::WEAPON);
 			proj->SetDir(dir);
 			proj->SetScale(Vec2(50.f, 50.f));

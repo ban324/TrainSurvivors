@@ -11,6 +11,9 @@ public:
 	void Render(HDC _dc) override;
 private:
 	Texture* m_projectileTex;
+public:
+	void SetSpeed(float val) { _bulletSpeed = val; }
+	float GetSpeed() { return _bulletDelay; }
 private:
 	float _bulletSpeed;
 	float _currentTime;

@@ -26,8 +26,8 @@ void Projectile::Update()
 {
 	Vec2 vPos = GetPos();
 	_curLT += fDT;
-	vPos.x += GetDir().x * fDT * 200;
-	vPos.y += GetDir().y * fDT * 200;
+	vPos.x += GetDir().x * fDT * _speed;
+	vPos.y += GetDir().y * fDT * _speed;
 	SetPos(vPos);
 	isCactus;
 	if (_curLT >= _lifeTime)

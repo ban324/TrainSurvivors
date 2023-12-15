@@ -57,9 +57,10 @@ Player::Player()
 	BurnWheel* mcg = new BurnWheel();
 	if (mcg)
 	{
-		mcg->bulletSize = 90.f;
-		mcg->cooltime = 0.5f;
-		mcg->duration = 5.f;
+		mcg->bulletSize = 30.f;
+		mcg->cooltime = 1.f;
+		mcg->duration = 10.f;
+		mcg->SetSpeed(10.f);
 		mcg->projectileCnt = 1;
 		mcg->power = 5.f;
 		mcg->SetPos(GetPos());;
