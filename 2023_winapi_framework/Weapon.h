@@ -8,7 +8,7 @@ class Weapon
 public:
 	virtual void Update();
 	virtual void Render(HDC _dc);
-	void Upgrade();
+	virtual void Upgrade();
 public:
 	Player * owner;
 public:

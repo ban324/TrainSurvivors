@@ -4,8 +4,8 @@
 
 void GaugeBar::SetGauge()
 {
-	SetScale(Vec2(currentExperience * 500 / maxExperience, 30));
-	SetPos(Vec2(200 + (currentExperience * 500/ (maxExperience * 2)), 30));
+	SetScale(Vec2(currentExperience * 500 / maxExperience, 10));
+	SetPos(Vec2(200 + (currentExperience * 500/ (maxExperience * 2)), 10));
 }
 
 void GaugeBar::Reset(int maxEx)

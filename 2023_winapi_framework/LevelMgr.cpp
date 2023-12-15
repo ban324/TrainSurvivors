@@ -31,7 +31,9 @@ void LevelMgr::Update()
 	{
 		if (gaugeBar->currentExperience > maxExperience)
 		{
-			level++;
+			if(level < levelEx.size() - 1)
+				level++;
+
 			maxExperience = levelEx[level];
 			UpgradePanelUp();
 		}
@@ -70,12 +72,11 @@ void LevelMgr::SettingWeapons(vector<Weapon*>& weapons)
 	//gaugeBar->SetTag(TAG::PLYAER);
 	SceneMgr::GetInst()->GetCurScene()->AddObject(gaugeBar, OBJECT_GROUP::UI);
 
-	levelEx = {50, 50, 50, 50};
+	levelEx = { 50, 50, 50, 50 };//레벨당 최대경험치
 
 	level = 0;
-	maxExperience = levelEx[0];
-	gaugeBar->Reset(maxExperience);
 	maxExperience = levelEx[level];
+	gaugeBar->Reset(maxExperience);
 
 	playerWeapons.clear();
 
@@ -93,8 +94,6 @@ void LevelMgr::IncreseExperience(int ex)
 void LevelMgr::UpgradePanelUp()
 {
 	//isOpen = true;
-	level++;
-
 	
 	std::set<int> benIndex;
 	for (int i = 0; i < 3; i++)
@@ -124,7 +123,7 @@ void LevelMgr::UpgradePanelDown()
 	gaugeBar->Reset(maxExperience);
 	for (int i = 0; i < 3; i++)
 	{
-		//MonsterMgr::GetInst()->UpgradeSpawn();
+		MonsterMgr::GetInst()->UpgradeSpawn();
 		EventMgr::GetInst()->DeleteObject(windowObj[i]);
 	}
 }
