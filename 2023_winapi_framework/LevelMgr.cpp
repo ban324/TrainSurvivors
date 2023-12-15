@@ -11,6 +11,7 @@
 #include "weapon.h"
 #include "MonsterMgr.h"
 #include "ResMgr.h"
+#include <iostream>
 
 void LevelMgr::Update()
 {
@@ -48,8 +49,11 @@ void LevelMgr::Render(HDC _dc)
 
 		Weapon* ww = windowObj[i]->weapon;
 		LPCWSTR name = ww->GetName().c_str();
-		int length = ww->GetName().length();
-		TextOut(_dc, windowObj[i]->GetPos().x, windowObj[i]->GetPos().y, name, length);
+		LPCWSTR level = std::to_wstring(ww->level).c_str();
+		int nameLength = ww->GetName().length();
+		int levelLength = std::to_wstring(ww->level).length();
+		TextOut(_dc, windowObj[i]->GetPos().x, windowObj[i]->GetPos().y, name, nameLength);
+		TextOut(_dc, windowObj[i]->GetPos().x, windowObj[i]->GetPos().y + 50, level, levelLength);
 	}
 }
 

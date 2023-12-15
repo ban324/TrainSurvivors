@@ -20,5 +20,6 @@ public:
 	float duration;
 	float bulletSize;
 	int projectileCnt;
+	int level;
 };
 
