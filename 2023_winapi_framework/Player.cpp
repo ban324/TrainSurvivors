@@ -55,7 +55,21 @@ Player::Player()
 	//for (size_t i = 0; i < pAnim->GetMaxFrame(); ++i)
 	//	pAnim->SetFrameOffset(i, Vec2(0.f, 20.f));
 
-	BurnWheel* mcg = new BurnWheel();
+	BurnWheel* burnWheel = new BurnWheel();
+	if (burnWheel)
+	{
+		burnWheel->bulletSize = 30.f;
+		burnWheel->cooltime = 1.f;
+		burnWheel->duration = 10.f;
+		burnWheel->SetSpeed(10.f);
+		burnWheel->projectileCnt = 1;
+		burnWheel->power = 5.f;
+		burnWheel->SetPos(GetPos());;
+		burnWheel->owner = this;
+		burnWheel->SetName(TEXT("BurningWheel"));
+		weapons.push_back(burnWheel);
+	}
+	MachineGun* mcg = new MachineGun();
 	if (mcg)
 	{
 		mcg->bulletSize = 30.f;
@@ -66,10 +80,36 @@ Player::Player()
 		mcg->power = 5.f;
 		mcg->SetPos(GetPos());;
 		mcg->owner = this;
-		weapons.push_back(mcg);
+		mcg->SetName(TEXT("MachineGun"));
 	}
-	Weapon* weapons[1] = {mcg};
-	LevelMgr::GetInst()->SettingWeapons(weapons);
+	Cactus* cactus = new Cactus();
+	if (cactus)
+	{	
+		cactus->bulletSize = 30.f;
+		cactus->cooltime = 1.f;
+		cactus->duration = 10.f;
+		cactus->SetSpeed(10.f);
+		cactus->projectileCnt = 1;
+		cactus->power = 5.f;
+		cactus->SetPos(GetPos());;
+		cactus->owner = this;
+		cactus->SetName(TEXT("Cactus"));
+	}
+	Turret* turret = new Turret();
+	if (turret)
+	{
+		turret->bulletSize = 30.f;
+		turret->cooltime = 1.f;
+		turret->duration = 10.f;
+		turret->SetSpeed(10.f);
+		turret->projectileCnt = 1;
+		turret->power = 5.f;
+		turret->SetPos(GetPos());;
+		turret->owner = this;
+		turret->SetName(TEXT("Turret"));
+	}
+	Weapon* weaponArr[5] = {burnWheel, cactus, turret, mcg};
+	LevelMgr::GetInst()->SettingWeapons(weaponArr);
 }
 Player::~Player()
 {
