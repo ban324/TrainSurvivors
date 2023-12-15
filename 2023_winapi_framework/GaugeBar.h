@@ -8,8 +8,9 @@ class GaugeBar :
 public://생성자, 소멸자
 public://함수
     void SetGauge();
-    void Reset();
+    void Reset(int maxEx);
     void Increse(int ex);
 public://함수
     int currentExperience;
+    int maxExperience;
 };
