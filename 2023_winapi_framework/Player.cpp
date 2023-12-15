@@ -17,6 +17,7 @@
 #include "MonsterMgr.h"
 #include "Cactus.h"
 #include "LevelMgr.h"
+#include "BurnWheel.h"
 Player::Player()
 	: m_pTex(nullptr),
 	speed(100.f),
@@ -42,7 +43,7 @@ Player::Player()
 		Vec2(128.f, 128.f), Vec2(128.f, 0.f), 8, 0.05f);
 	//m_pTex = ResMgr::GetInst()->TexLoad(L"jiwoo", L"Texture\\jiwoo.bmp");
 	CreateCollider();
-	GetCollider()->SetScale(Vec2(128.f,128.f));
+	GetCollider()->SetScale(Vec2(60.f,60.f));
 	//GetCollider()->SetOffSetPos(Vec2(50.f,0.f));
 	GetAnimator()->PlayAnim(L"Train_Right", true);
 	//// ������ �ǵ帮��
@@ -54,14 +55,15 @@ Player::Player()
 	//for (size_t i = 0; i < pAnim->GetMaxFrame(); ++i)
 	//	pAnim->SetFrameOffset(i, Vec2(0.f, 20.f));
 
-	Turret* mcg = new Turret();
+	BurnWheel* mcg = new BurnWheel();
 	if (mcg)
 	{
-		mcg->bulletSize = 50.f;
+		mcg->bulletSize = 30.f;
 		mcg->cooltime = 1.f;
-		mcg->duration = 5.f;
+		mcg->duration = 10.f;
+		mcg->SetSpeed(10.f);
 		mcg->projectileCnt = 1;
-		mcg->power = 1.f;
+		mcg->power = 5.f;
 		mcg->SetPos(GetPos());;
 		mcg->owner = this;
 		weapons.push_back(mcg);

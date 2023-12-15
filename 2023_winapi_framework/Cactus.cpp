@@ -7,11 +7,12 @@
 #include "Projectile.h"
 #include "ResMgr.h"
 #include "Collider.h"
+#include "EventMgr.h"
 Cactus::Cactus()
 	:m_projectileTex(nullptr),
 	_currentTime(0.f)
 {
-	m_projectileTex = ResMgr::GetInst()->TexLoad(L"MachineGunProjectile", L"Texture\\Projectile\\MachineGunProjectile.bmp");
+	m_projectileTex = ResMgr::GetInst()->TexLoad(L"CactusProjectile", L"Texture\\Projectile\\Cactus.bmp");
 }
 
 Cactus::~Cactus()
@@ -38,11 +39,12 @@ void Cactus::Update()
 
 			proj->SetTag(TAG::WEAPON);
 			proj->SetDir(dir);
-			proj->SetScale(Vec2(20.f, 20.f));
+			proj->SetScale(Vec2(50.f, 50.f));
 			proj->owner = this;
 			proj->power = power;
+			proj->isCactus = true;
 			proj->SetDuration(duration);
-			proj->GetCollider()->SetScale(Vec2(20.f, 20.f));
+			proj->GetCollider()->SetScale(Vec2(50.f, 50.f));
 			vecProjectiles.push_back(proj);
 			scene->AddObject(proj, OBJECT_GROUP::BULLET);
 
@@ -51,7 +53,8 @@ void Cactus::Update()
 	}
 	for (auto iter = vecProjectiles.begin(); iter != vecProjectiles.end(); ++iter)
 	{
-		(*iter)->Update();
+			(*iter)->Update();
+		
 	}
 }
 
@@ -66,9 +69,9 @@ void Cactus::Render(HDC _dc)
 		}
 		else
 		{
-			std::shared_ptr<Scene> scene = SceneMgr::GetInst()->GetCurScene();
-			scene->EraseObject(OBJECT_GROUP::BULLET, (*iter));
-			iter = vecProjectiles.erase(find(vecProjectiles.begin(), vecProjectiles.end(), *iter));
+			assert(*iter);
+			EventMgr::GetInst()->DeleteObject(*iter);
+			iter = vecProjectiles.erase(iter);
 		}
 	}
 }

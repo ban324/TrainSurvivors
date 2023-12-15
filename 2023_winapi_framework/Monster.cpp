@@ -8,6 +8,7 @@
 #include "ResMgr.h"
 #include "Texture.h"
 #include "LevelMgr.h"
+#include "Projectile.h"
 Monster::Monster()
 	: playerObj(nullptr)
 	, m_fSpeed(100.f)
@@ -47,7 +48,7 @@ void Monster::Update()
 		vCurPos.y += m_fSpeed * fDT * vec.y;
 	}
 
-	//±∏πˆ¿¸
+	//ÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩ
 	/*if (abs(vCurPos.x - playerObj->GetPos().x) > 35.f)
 		vCurPos.x += m_fSpeed * fDT * vec.x;
 	if(abs(vCurPos.y - playerObj->GetPos().y) > 35.f)
@@ -100,14 +101,16 @@ void Monster::EnterCollision(Collider* _pOther)
 	TAG* tag = pOtherObj->GetTag();
 	if ( *tag == TAG::WEAPON)
 	{
-		// ªË¡¶√≥∏Æ«ÿ¡÷∏Èµ≈.
-		/*Object* pModifiedObj = const_cast<Object*>(pOtherObj);
-		EventMgr::GetInst()->DeleteObject(pModifiedObj);*/
-
-		m_iHp -= 1;
 		if (m_iHp <= 0)
 		{
 			LevelMgr::GetInst()->IncreseExperience(m_fEx);
+		const Projectile* proj = dynamic_cast<const Projectile*>(_pOther->GetObj());
+		if (proj)
+		{
+			m_iHp -= proj->power;
+
+		}
+		if(m_iHp<=0)
 			EventMgr::GetInst()->DeleteObject(this);
 		}
 	}
@@ -128,7 +131,7 @@ void Monster::StayCollision(Collider* _pOther)
 	TAG* tag = pOtherObj->GetTag();
 	if (time > m_fDelay && *tag == TAG::PLYAER)
 	{
-		//∞¯∞›
+		//ÔøΩÔøΩÔøΩÔøΩ
 		playerObj->currentHP -= m_fAttack;
 		time = 0;
 	}

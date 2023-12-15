@@ -20,22 +20,20 @@ Projectile::Projectile()
 
 Projectile::~Projectile()
 {
+
 }
 
 void Projectile::Update()
 {
 	Vec2 vPos = GetPos();
 	_curLT += fDT;
-	vPos.x += GetDir().x * fDT * 200;
-	vPos.y += GetDir().y * fDT * 200;
+	vPos.x += GetDir().x * fDT * _speed;
+	vPos.y += GetDir().y * fDT * _speed;
 	SetPos(vPos);
 	isCactus;
 	if (_curLT >= _lifeTime)
 	{
-		if (find(owner->vecProjectiles.begin(), owner->vecProjectiles.end(), this) != owner->vecProjectiles.end() )
-		{
-			m_IsAlive = false;
-		}
+		m_IsAlive = false;
 
 	}
 }
@@ -58,14 +56,25 @@ void Projectile::Render(HDC _Dc)
 
 void Projectile::EnterCollision(Collider* _pOther)
 {
-	if (isCactus)
+	if (isCactus )
 	{
-		if ((*_pOther->GetObj()->GetTag()) == TAG::ENEMY)
 		{
-			Vec2 dir = GetDir();
-			dir.x *= -1;
-			dir.y *= -1;
-			SetDir(dir);
+			if ((*_pOther->GetObj()->GetTag()) == TAG::ENEMY)
+			{
+				Vec2 dir = GetDir();
+				dir.x *= -1;
+				dir.y *= -1;
+				SetDir(dir);
+				bounded = true;
+				boundCnt -= 4;
+			}
+
 		}
 	}
+}
+
+void Projectile::ExitCollision(Collider* _pOther)
+{
+	bounded = false;
+	boundCnt = 0;
 }

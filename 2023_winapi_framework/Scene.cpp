@@ -1,6 +1,7 @@
 #include "pch.h"
 #include "Scene.h"
 #include "Object.h"
+#include "EventMgr.h"
 Scene::Scene()
 {
 }
@@ -56,7 +57,7 @@ void Scene::Release()
 	{
 		for (size_t j = 0; j < m_vecObj[i].size(); ++j)
 		{
-			delete m_vecObj[i][j];
+			EventMgr::GetInst()->DeleteObject(m_vecObj[i][j]);
 		}
 		m_vecObj[i].clear();
 	}
@@ -64,7 +65,12 @@ void Scene::Release()
 
 void Scene::EraseObject(OBJECT_GROUP group, Object * obj)
 {
-	m_vecObj[(UINT)group].erase(find(m_vecObj[(UINT)group].begin(), m_vecObj[(UINT)group].end(), obj));
+	assert(obj);
+	if (m_vecObj[(UINT)group].end() != find(m_vecObj[(UINT)group].begin(), m_vecObj[(UINT)group].end(), obj))
+	{
+		m_vecObj[(UINT)group].erase(find(m_vecObj[(UINT)group].begin(), m_vecObj[(UINT)group].end(), obj));
+
+	}
 }
 
 Vec2 Scene::GetProximateDir()
