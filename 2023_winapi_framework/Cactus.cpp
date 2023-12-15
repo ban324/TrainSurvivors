@@ -39,12 +39,12 @@ void Cactus::Update()
 
 			proj->SetTag(TAG::WEAPON);
 			proj->SetDir(dir);
-			proj->SetScale(Vec2(50.f, 50.f));
+			proj->SetScale(Vec2(bulletSize, bulletSize));
 			proj->owner = this;
 			proj->power = power;
 			proj->isCactus = true;
 			proj->SetDuration(duration);
-			proj->GetCollider()->SetScale(Vec2(50.f, 50.f));
+			proj->GetCollider()->SetScale(Vec2(bulletSize, bulletSize));
 			vecProjectiles.push_back(proj);
 			scene->AddObject(proj, OBJECT_GROUP::BULLET);
 

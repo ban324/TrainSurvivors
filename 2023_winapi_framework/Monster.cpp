@@ -103,15 +103,15 @@ void Monster::EnterCollision(Collider* _pOther)
 	{
 		if (m_iHp <= 0)
 		{
+			EventMgr::GetInst()->DeleteObject(this);
+
 			LevelMgr::GetInst()->IncreseExperience(m_fEx);
+		}
 		const Projectile* proj = dynamic_cast<const Projectile*>(_pOther->GetObj());
 		if (proj)
 		{
 			m_iHp -= proj->power;
 
-		}
-		if(m_iHp<=0)
-			EventMgr::GetInst()->DeleteObject(this);
 		}
 	}
 	else if (*tag == TAG::PLYAER)

@@ -38,7 +38,7 @@ void MachineGun::Update()
 			proj->owner = this;
 			proj->power = power;
 			proj->SetDuration(duration);
-			proj->GetCollider()->SetScale(Vec2(20.f,20.f));
+			proj->SetScale(Vec2(bulletSize, bulletSize));
 			vecProjectiles.push_back(proj);
 			scene->AddObject(proj, OBJECT_GROUP::BULLET);
 			

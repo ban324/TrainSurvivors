@@ -6,10 +6,18 @@ void EventMgr::Update()
 
 	for (size_t i = 0; i < m_vecDead.size(); ++i)
 	{
-		if (m_vecDead[i])
+		if (m_vecDead[i]->GetTag())
 		{
+			try
+			{
 
-			delete m_vecDead[i];
+				delete m_vecDead[i];
+			}
+			catch (const std::exception&)
+			{
+
+			}
+
 		}
 	}
 	m_vecDead.clear();

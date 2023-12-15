@@ -78,7 +78,7 @@ Player::~Player()
 }
 void Player::Update()
 {
-
+	
 	if (KEY_PRESS(KEY_TYPE::LEFT))
 	{
 		dir.x = -1;
@@ -94,7 +94,7 @@ void Player::Update()
 		(*iter)->Update();
 	}
 	Vec2 vPos = GetPos();
-	vPos.x += dir.x * 100 * fDT;	
+	vPos.x += dir.x * 150 * fDT;	
 	SetPos(vPos);
 	GetAnimator()->Update();
 	
