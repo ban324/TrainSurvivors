@@ -47,10 +47,14 @@ void LevelMgr::Render(HDC _dc)
 		SelectObject(_dc, ResMgr::GetInst()->GetFont(L"SubFont"));
 
 		Weapon* ww = windowObj[i]->weapon;
+
+		wstring levelStr = std::to_wstring(ww->level);
 		LPCWSTR name = ww->GetName().c_str();
-		LPCWSTR level = std::to_wstring(ww->level).c_str();
+		LPCWSTR level = levelStr.c_str();
+
 		int nameLength = ww->GetName().length();
-		int levelLength = std::to_wstring(ww->level).length();
+		int levelLength = levelStr.length() + 1;
+
 		TextOut(_dc, windowObj[i]->GetPos().x, windowObj[i]->GetPos().y, name, nameLength);
 		TextOut(_dc, windowObj[i]->GetPos().x, windowObj[i]->GetPos().y + 50, level, levelLength);
 	}
