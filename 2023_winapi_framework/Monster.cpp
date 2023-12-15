@@ -42,7 +42,7 @@ void Monster::Update()
 	int y = abs(vCurPos.y - playerObj->GetPos().y);
 	int z = sqrt(pow(x, 2) + pow(y, 2));
 
-	if (z > 65.f)
+	if (z > 40.f)
 	{
 		vCurPos.x += m_fSpeed * fDT * vec.x;
 		vCurPos.y += m_fSpeed * fDT * vec.y;
