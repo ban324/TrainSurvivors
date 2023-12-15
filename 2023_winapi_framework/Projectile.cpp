@@ -20,6 +20,7 @@ Projectile::Projectile()
 
 Projectile::~Projectile()
 {
+
 }
 
 void Projectile::Update()

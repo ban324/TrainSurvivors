@@ -23,10 +23,14 @@ void EventMgr::Update()
 
 void EventMgr::DeleteObject(Object* _pObj)
 {
-	tEvent eve = {};
-	eve.eEve = EVENT_TYPE::DELETE_OBJECT;
-	eve.Obj = _pObj;
-	m_vecEvent.push_back(eve);
+	if (_pObj != nullptr)
+	{
+		tEvent eve = {};
+		eve.eEve = EVENT_TYPE::DELETE_OBJECT;
+		eve.Obj = _pObj;
+		m_vecEvent.push_back(eve);
+
+	}
 }
 
 void EventMgr::Excute(const tEvent& _eve)
