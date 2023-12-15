@@ -28,10 +28,10 @@ void Gameover_Scene::Update()
 {
 	Scene::Update();
 
-	if (KEY_DOWN(KEY_TYPE::ENTER))
+	/*if (KEY_DOWN(KEY_TYPE::ENTER))
 	{
 		SceneMgr::GetInst()->LoadScene(L"Start_Scene");
-	}
+	}*/
 }
 
 void Gameover_Scene::Render(HDC _dc)
@@ -43,9 +43,9 @@ void Gameover_Scene::Render(HDC _dc)
 	SetTextColor(_dc, RGB(255, 0, 0));
 	SelectObject(_dc, ResMgr::GetInst()->GetFont(L"TitleFont"));
 	TextOut(_dc, 750, 200, L"GAMEOVER", 8);
-	SetTextColor(_dc, RGB(255, 255, 255));
+	/*SetTextColor(_dc, RGB(255, 255, 255));
 	SelectObject(_dc, ResMgr::GetInst()->GetFont(L"SubFont"));
-	TextOut(_dc, 750, 400, L"Press Enter to Restart", 22);
+	TextOut(_dc, 750, 400, L"Press Enter to Restart", 22);*/
 }
 
 void Gameover_Scene::Release()

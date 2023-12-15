@@ -70,12 +70,10 @@ void LevelMgr::SettingWeapons(vector<Weapon*>& weapons)
 	//gaugeBar->SetTag(TAG::PLYAER);
 	SceneMgr::GetInst()->GetCurScene()->AddObject(gaugeBar, OBJECT_GROUP::UI);
 
-	levelEx.push_back(50);
-	levelEx.push_back(50);
-	levelEx.push_back(50);
-	levelEx.push_back(50);
+	levelEx = {50, 50, 50, 50};
 
 	level = 0;
+	maxExperience = levelEx[0];
 	gaugeBar->Reset(maxExperience);
 	maxExperience = levelEx[level];
 
@@ -122,6 +120,7 @@ void LevelMgr::UpgradePanelDown()
 {
 	TimeMgr::GetInst()->DIO(false);
 	isOpen = false;
+	maxExperience = levelEx[level];
 	gaugeBar->Reset(maxExperience);
 	for (int i = 0; i < 3; i++)
 	{
