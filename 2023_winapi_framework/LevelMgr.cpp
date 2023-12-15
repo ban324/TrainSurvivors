@@ -32,7 +32,6 @@ void LevelMgr::Update()
 		if (gaugeBar->currentExperience > maxExperience)
 		{
 			level++;
-			gaugeBar->Reset();
 			maxExperience = levelEx[level];
 			UpgradePanelUp();
 		}
@@ -119,6 +118,7 @@ void LevelMgr::UpgradePanelDown()
 {
 	TimeMgr::GetInst()->DIO(false);
 	isOpen = false;
+	gaugeBar->Reset();
 	for (int i = 0; i < 3; i++)
 	{
 		//MonsterMgr::GetInst()->UpgradeSpawn();
