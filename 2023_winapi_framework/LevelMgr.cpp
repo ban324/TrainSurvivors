@@ -47,11 +47,9 @@ void LevelMgr::Render(HDC _dc)
 		SelectObject(_dc, ResMgr::GetInst()->GetFont(L"SubFont"));
 
 		Weapon* ww = windowObj[i]->weapon;
-		//int power = windowObj[i]->weapon->power;
-		/*LPCWSTR name = windowObj[i]->weapon->GetName().c_str();
-		int length = windowObj[i]->weapon->GetName().length();*/
-		//TextOut(_dc, windowObj[i]->GetPos().x, windowObj[i]->GetPos().y, name, length);
-		TextOut(_dc, windowObj[i]->GetPos().x, windowObj[i]->GetPos().y, L"hh", 2);
+		LPCWSTR name = ww->GetName().c_str();
+		int length = ww->GetName().length();
+		TextOut(_dc, windowObj[i]->GetPos().x, windowObj[i]->GetPos().y, name, length);
 	}
 }
 
@@ -75,13 +73,11 @@ void LevelMgr::SettingWeapons(Weapon* weapons[])
 	maxExperience = levelEx[level];
 
 	playerWeapons.clear();
-	for (int i = 0; weapons[i]->bulletSize != 0; i++)
+	int size = sizeof(weapons) / sizeof(weapons[0]);
+	for (int i = 0; i < 3; i++)
 	{
-		
-		playerWeapons.push_back(weapons[i]);
+		playerWeapons.push_back(weapons[0]);
 	}
-
-	//ResMgr::GetInst()->LoadFont(L"SubFont", L"Font\\MainFont.ttf", 30);
 }
 
 void LevelMgr::IncreseExperience(int ex)

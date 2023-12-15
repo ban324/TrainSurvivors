@@ -11,7 +11,7 @@ Turret::Turret()
 	:m_projectileTex(nullptr),
 	_currentTime(0.f)
 {
-	m_strName = L"Turret";
+	SetName(L"Turret");
 	m_projectileTex = ResMgr::GetInst()->TexLoad(L"MachineGunProjectile", L"Texture\\Projectile\\MachineGunProjectile.bmp");
 }
 
