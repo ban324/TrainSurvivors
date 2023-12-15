@@ -66,20 +66,20 @@ void LevelMgr::SettingWeapons(Weapon* weapons[])
 	//gaugeBar->SetTag(TAG::PLYAER);
 	SceneMgr::GetInst()->GetCurScene()->AddObject(gaugeBar, OBJECT_GROUP::UI);
 
+	levelEx.push_back(500);
 	levelEx.push_back(50);
 	levelEx.push_back(50);
-	levelEx.push_back(120);
-	levelEx.push_back(130);
+	levelEx.push_back(50);
 
 	level = 0;
-	gaugeBar->Reset();
+	gaugeBar->Reset(maxExperience);
 	maxExperience = levelEx[level];
 
 	playerWeapons.clear();
 	int size = sizeof(weapons) / sizeof(weapons[0]);
-	for (int i = 0; i < 3; i++)
+	for (int i = 0; i < size; i++)
 	{
-		playerWeapons.push_back(weapons[0]);
+		playerWeapons.push_back(weapons[i]);
 	}
 }
 
@@ -118,7 +118,7 @@ void LevelMgr::UpgradePanelDown()
 {
 	TimeMgr::GetInst()->DIO(false);
 	isOpen = false;
-	gaugeBar->Reset();
+	gaugeBar->Reset(maxExperience);
 	for (int i = 0; i < 3; i++)
 	{
 		//MonsterMgr::GetInst()->UpgradeSpawn();
