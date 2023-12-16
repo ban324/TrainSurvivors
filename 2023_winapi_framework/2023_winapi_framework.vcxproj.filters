@@ -207,6 +207,8 @@
     <ClInclude Include="GaugeBar.h">
       <Filter>Engine\04. Object\MainObject\UIObject</Filter>
     </ClInclude>
+    <ClInclude Include="BurnWheel.h" />
+    <ClInclude Include="Sprinkler.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="2023_winapi_framework.rc">
@@ -332,5 +334,7 @@
     <ClCompile Include="GaugeBar.cpp">
       <Filter>Engine\04. Object\MainObject\UIObject</Filter>
     </ClCompile>
+    <ClCompile Include="BurnWheel.cpp" />
+    <ClCompile Include="Sprinkler.cpp" />
   </ItemGroup>
 </Project>

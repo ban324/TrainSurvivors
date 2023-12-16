@@ -58,7 +58,6 @@ void Projectile::EnterCollision(Collider* _pOther)
 {
 	if (isCactus )
 	{
-		{
 			if ((*_pOther->GetObj()->GetTag()) == TAG::ENEMY)
 			{
 				Vec2 dir = GetDir();
@@ -69,7 +68,6 @@ void Projectile::EnterCollision(Collider* _pOther)
 				boundCnt -= 4;
 			}
 
-		}
 	}
 }
 

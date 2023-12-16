@@ -18,6 +18,7 @@
 #include "Cactus.h"
 #include "LevelMgr.h"
 #include "BurnWheel.h"
+#include "Sprinkler.h"
 Player::Player()
 	: m_pTex(nullptr),
 	speed(100.f),
@@ -67,7 +68,8 @@ Player::Player()
 		burnWheel->SetPos(GetPos());;
 		burnWheel->owner = this;
 		burnWheel->SetName(TEXT("BurningWheel"));
-		weapons.push_back(burnWheel);
+		burnWheel->level = 1;
+		//weapons.push_back(burnWheel);
 	}
 	MachineGun* mcg = new MachineGun();
 	if (mcg)
@@ -80,6 +82,7 @@ Player::Player()
 		mcg->power = 5.f;
 		mcg->SetPos(GetPos());;
 		mcg->owner = this;
+		mcg->level = 1;
 		mcg->SetName(TEXT("MachineGun"));
 	}
 	Cactus* cactus = new Cactus();
@@ -93,6 +96,7 @@ Player::Player()
 		cactus->power = 5.f;
 		cactus->SetPos(GetPos());;
 		cactus->owner = this;
+		cactus->level = 1;
 		cactus->SetName(TEXT("Cactus"));
 	}
 	Turret* turret = new Turret();
@@ -107,6 +111,23 @@ Player::Player()
 		turret->SetPos(GetPos());;
 		turret->owner = this;
 		turret->SetName(TEXT("Turret"));
+		turret->level = 1;
+	}	
+	Sprinkler* sprinkler = new Sprinkler();
+	if (sprinkler)
+	{
+		sprinkler->bulletSize = 30.f;
+		sprinkler->cooltime = 1.f;
+		sprinkler->duration = 10.f;
+		sprinkler->SetDelay(0.8f);
+		sprinkler->projectileCnt = 1;
+		sprinkler->power = 5.f;
+		sprinkler->SetPos(GetPos());;
+		sprinkler->owner = this;
+		sprinkler->SetName(TEXT("Sprinkler"));
+		sprinkler->SetScale(Vec2(50.f, 50.f));
+		sprinkler->level = 1;
+		weapons.push_back(sprinkler);
 	}
 	vector<Weapon*> weaponVector = { burnWheel, cactus, turret, mcg };
 	Weapon* weaponArr[5] = {burnWheel, cactus, turret, mcg};
