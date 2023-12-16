@@ -111,12 +111,14 @@ void LevelMgr::UpgradePanelUp()
 		SceneMgr::GetInst()->GetCurScene()->AddObject(windowObj[i], OBJECT_GROUP::UI);
 	}
 	isOpen = true;
+	MonsterMgr::GetInst()->StopSpawnMonster();
 	TimeMgr::GetInst()->Pause(true);
 }
 
 void LevelMgr::UpgradePanelDown()
 {
 	TimeMgr::GetInst()->Pause(false);
+	MonsterMgr::GetInst()->StartSpawnMonster();
 	isOpen = false;
 	maxExperience = 1 + level * level;
 	gaugeBar->Reset(maxExperience);
