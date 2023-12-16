@@ -31,10 +31,9 @@ void LevelMgr::Update()
 	{
 		if (gaugeBar->currentExperience > maxExperience)
 		{
-			if(level < levelEx.size() - 1)
 				level++;
 
-			maxExperience = levelEx[level];
+			maxExperience = 1 + level * level;
 			UpgradePanelUp();
 		}
 	}
@@ -75,7 +74,7 @@ void LevelMgr::SettingWeapons(vector<Weapon*>& weapons)
 	levelEx = { 50, 50, 50, 50 };//레벨당 최대경험치
 
 	level = 0;
-	maxExperience = levelEx[level];
+	maxExperience = 1 + level * level;
 	gaugeBar->Reset(maxExperience);
 
 	playerWeapons.clear();
@@ -112,14 +111,14 @@ void LevelMgr::UpgradePanelUp()
 		SceneMgr::GetInst()->GetCurScene()->AddObject(windowObj[i], OBJECT_GROUP::UI);
 	}
 	isOpen = true;
-	TimeMgr::GetInst()->DIO(true);
+	TimeMgr::GetInst()->Pause(true);
 }
 
 void LevelMgr::UpgradePanelDown()
 {
-	TimeMgr::GetInst()->DIO(false);
+	TimeMgr::GetInst()->Pause(false);
 	isOpen = false;
-	maxExperience = levelEx[level];
+	maxExperience = 1 + level * level;
 	gaugeBar->Reset(maxExperience);
 	for (int i = 0; i < 3; i++)
 	{

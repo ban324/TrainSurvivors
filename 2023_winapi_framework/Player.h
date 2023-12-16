@@ -13,6 +13,9 @@ public:
     void Render(HDC _dc) override;
 private:
     void CreateBullet();
+public:
+    void AddWeapon(WEAPON_TYPE wpType);
+
 private:
     bool isRight;
 private:
@@ -26,6 +29,7 @@ public:
     vector<Weapon *> weapons;
 public:
     Vec2 dir;
+    map<WEAPON_TYPE, Weapon *> weaponDic;
 public:
     float maxHP;
     float currentHP;

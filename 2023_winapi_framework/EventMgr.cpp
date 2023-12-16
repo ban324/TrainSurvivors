@@ -6,7 +6,7 @@ void EventMgr::Update()
 
 	for (size_t i = 0; i < m_vecDead.size(); ++i)
 	{
-		if (m_vecDead[i]->GetTag())
+		if (m_vecDead[i]->GetTag() != reinterpret_cast<TAG*>(0xdddddddddddddddd) && m_vecDead[i]->GetTag() != nullptr && *m_vecDead[i]->GetTag() <= TAG::WEAPON && *m_vecDead[i]->GetTag() >= TAG::PLYAER)
 		{
 			try
 			{
@@ -31,7 +31,7 @@ void EventMgr::Update()
 
 void EventMgr::DeleteObject(Object* _pObj)
 {
-	if (_pObj != nullptr)
+	if (_pObj != nullptr && _pObj != reinterpret_cast<Object*>(0xdddddddddddddddd))
 	{
 		tEvent eve = {};
 		eve.eEve = EVENT_TYPE::DELETE_OBJECT;

@@ -44,25 +44,25 @@ void MonsterMgr::Update()
 		{
 			pMonster = new Robber1;
 			pMonster->SetKind(MONSTER_KIND::NORMAL1);
-			pMonster->SetStat(enemyHp, enemyAttack, 50);
+			pMonster->SetStat(enemyHp, enemyAttack, 1);
 		}
 		else if (random > 3)
 		{
 			pMonster = new Robber2;
 			pMonster->SetKind(MONSTER_KIND::NORMAL2); 
-			pMonster->SetStat(enemyHp, enemyAttack, 50);
+			pMonster->SetStat(enemyHp, enemyAttack, 3);
 		}
 		else if (random > 0)
 		{
 			pMonster = new Robber3;
 			pMonster->SetKind(MONSTER_KIND::NORMAL3);
-			pMonster->SetStat(enemyHp, enemyAttack, 50);
+			pMonster->SetStat(enemyHp, enemyAttack, 5);
 		}
 		else
 		{
 			pMonster = new Robber4;
 			pMonster->SetKind(MONSTER_KIND::BOSS);
-			pMonster->SetStat(enemyHp, enemyAttack, 60);
+			pMonster->SetStat(enemyHp, enemyAttack, 10);
 		}
 
 		int monsterScale = 10;

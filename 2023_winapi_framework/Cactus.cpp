@@ -12,6 +12,7 @@ Cactus::Cactus()
 	:m_projectileTex(nullptr),
 	_currentTime(0.f)
 {
+	m_wpType = WEAPON_TYPE::CACTUS;
 	m_projectileTex = ResMgr::GetInst()->TexLoad(L"CactusProjectile", L"Texture\\Projectile\\Cactus.bmp");
 }
 
@@ -74,4 +75,20 @@ void Cactus::Render(HDC _dc)
 			iter = vecProjectiles.erase(iter);
 		}
 	}
+}
+
+void Cactus::Upgrade()
+{
+
+	if (level <= 1)
+	{
+		owner->AddWeapon(m_wpType);
+	}
+	++level;
+	
+	
+	_bulletSpeed += 20.f;
+	bulletSize += 20;
+	projectileCnt+= level %3 ? 1: 0;
+	
 }

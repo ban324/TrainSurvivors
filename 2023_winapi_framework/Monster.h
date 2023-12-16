@@ -1,6 +1,7 @@
 #pragma once
 #include "Object.h"
 #include "Player.h"
+#include "LevelMgr.h"
 class Texture;
 class Monster : public Object
 {
@@ -16,6 +17,7 @@ public:
 	virtual void StayCollision(Collider* _pOther)  override;
 
 public:
+	void Damage(int pows);
 	void SetPlayerObj(Player* pObj);
 	void SetSpeed(float _f) { m_fSpeed = _f; }
 	void SetStat(float _hp, float _attack, float _ex) {

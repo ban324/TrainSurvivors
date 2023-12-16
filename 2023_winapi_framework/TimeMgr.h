@@ -5,7 +5,7 @@ class TimeMgr
 public:
 	void Init();
 	void Update();
-	void DIO(bool value) { theWord = value; }
+	void Pause(bool value) { theWord = value; }
 public:
 	const float& GetDT() const { return m_dT; }
 private:

@@ -12,6 +12,8 @@ MachineGun::MachineGun()
 	:m_projectileTex(nullptr),
 	_currentTime(0.f)
 {
+	m_wpType = WEAPON_TYPE::MACHINEGUN;
+
 	m_projectileTex = ResMgr::GetInst()->TexLoad(L"MachineGunProjectile", L"Texture\\Projectile\\MachineGunProjectile.bmp");
 }
 
@@ -67,4 +69,19 @@ void MachineGun::Render(HDC _dc)
 			iter = vecProjectiles.erase(iter);
 		}
 	}
+}
+
+void MachineGun::Upgrade()
+{
+	if (level <= 1)
+	{
+		owner->AddWeapon(m_wpType);
+	}
+	++level;
+
+
+	_bulletSpeed += 10.f;
+	bulletSize += 5;
+	projectileCnt += level % 6 ? 1 : 0;
+	cooltime -= level % 3 ? 0.1f : 0;
 }

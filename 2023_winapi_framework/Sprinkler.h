@@ -9,6 +9,7 @@ public:
 public:
 	void Update() override;
 	void Render(HDC _dc) override;
+	void Upgrade() override;
 public:
 	void EnterCollision(Collider* _pOther) override;
 	void StayCollision(Collider* _pOther) override;

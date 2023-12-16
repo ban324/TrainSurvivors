@@ -12,6 +12,7 @@ Turret::Turret()
 	:m_projectileTex(nullptr),
 	_currentTime(0.f)
 {
+	m_wpType = WEAPON_TYPE::TURRET;
 	SetName(L"Turret");
 	m_projectileTex = ResMgr::GetInst()->TexLoad(L"MachineGunProjectile", L"Texture\\Projectile\\MachineGunProjectile.bmp");
 }
@@ -70,4 +71,19 @@ void Turret::Render(HDC _dc)
 			iter = vecProjectiles.erase(iter);
 		}
 	}
+}
+
+void Turret::Upgrade()
+{
+	if (level <= 1)
+	{
+		owner->AddWeapon(m_wpType);
+	}
+	++level;
+
+
+	_bulletSpeed += 5.f;
+	bulletSize += 1;
+	cooltime -= 0.05f;
+
 }

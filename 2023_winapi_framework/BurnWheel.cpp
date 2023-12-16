@@ -16,7 +16,9 @@ BurnWheel::BurnWheel()
 	_currentTime(0),
 	m_projectileTex(0)
 {
-	m_projectileTex = ResMgr::GetInst()->TexLoad(L"CactusProjectile", L"Texture\\Projectile\\BurnWheel.bmp");
+	m_wpType = WEAPON_TYPE::BURNINGWHEEL;
+
+	m_projectileTex = ResMgr::GetInst()->TexLoad(L"BurnWheel", L"Texture\\Projectile\\BurnWheel.bmp");
 
 }
 
@@ -78,4 +80,20 @@ void BurnWheel::Render(HDC _dc)
 		if (iter == vecProjectiles.end())break;
 	}
 
+}
+
+void BurnWheel::Upgrade()
+{
+	if (level <= 1)
+	{
+		owner->AddWeapon(m_wpType);
+	}
+	else
+	{
+		duration += 0.3f;
+		_bulletSpeed++;
+		bulletSize += 8.f;
+		projectileCnt += level % 5;
+	}
+	++level;
 }

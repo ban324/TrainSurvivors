@@ -17,7 +17,7 @@ void Scene::Update()
 	{
 		for (size_t j = 0; j < m_vecObj[i].size(); ++j)
 		{
-			if(!m_vecObj[i][j]->GetIsDead())
+			if(!m_vecObj[i][j]->GetIsDead() && m_vecObj[i][j] != reinterpret_cast<Object*>(0xdddddddddddddddd))
 				m_vecObj[i][j]->Update();
 		}
 	}

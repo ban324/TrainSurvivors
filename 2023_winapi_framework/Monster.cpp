@@ -19,7 +19,7 @@ Monster::Monster()
 	, m_fDirX(0.f)
 	, m_fDirY(0.f)
 	, m_iHp(5)
-	, m_fEx(50)
+	, m_fEx(1)
 	, time(0)
 	, m_pTex(nullptr)
 {
@@ -97,26 +97,22 @@ void Monster::SetPlayerObj(Player* pObj)
 
 void Monster::EnterCollision(Collider* _pOther)
 {
-	const Object* pOtherObj = _pOther->GetObj();
-	TAG* tag = pOtherObj->GetTag();
-	if ( *tag == TAG::WEAPON)
+	if (!GetIsDead())
 	{
-		if (m_iHp <= 0)
+		const Object* pOtherObj = _pOther->GetObj();
+		TAG* tag = pOtherObj->GetTag();
+		if (*tag == TAG::WEAPON)
 		{
-			EventMgr::GetInst()->DeleteObject(this);
-
-			LevelMgr::GetInst()->IncreseExperience(m_fEx);
+			const Projectile* proj = dynamic_cast<const Projectile*>(_pOther->GetObj());
+			if (proj)
+			{
+				Damage(proj->power);
+			}
 		}
-		const Projectile* proj = dynamic_cast<const Projectile*>(_pOther->GetObj());
-		if (proj)
+		else if (*tag == TAG::PLYAER || *tag == TAG::WEAPON)
 		{
-			m_iHp -= proj->power;
-
+			time = 0;
 		}
-	}
-	else if (*tag == TAG::PLYAER)
-	{
-		time = 0;
 	}
 }
 
@@ -127,13 +123,38 @@ void Monster::ExitCollision(Collider* _pOther)
 
 void Monster::StayCollision(Collider* _pOther)
 {
-	const Object* pOtherObj = _pOther->GetObj();
-	TAG* tag = pOtherObj->GetTag();
-	if (time > m_fDelay && *tag == TAG::PLYAER)
+	if (!GetIsDead())
 	{
-		//����
-		playerObj->currentHP -= m_fAttack;
-		time = 0;
+		const Object* pOtherObj = _pOther->GetObj();
+		TAG* tag = pOtherObj->GetTag();
+		if (time > m_fDelay && *tag == TAG::PLYAER)
+		{
+			//����
+			playerObj->currentHP -= m_fAttack;
+			time = 0;
+		}
+		if (time > m_fDelay && *tag == TAG::WEAPON)
+		{
+			const Weapon* wp = dynamic_cast<const Weapon*>(pOtherObj);
+			if (wp != nullptr)
+			{
+
+				Damage(wp->power);
+			}
+		}
+		time += m_fSpeed * fDT * 3;
 	}
-	time += m_fSpeed * fDT * 3;
+
+}
+
+void Monster::Damage(int pow)
+{
+	m_iHp -= pow;
+	if (m_iHp <= 0)
+	{
+		EventMgr::GetInst()->DeleteObject(this);
+		m_IsAlive = false;
+		LevelMgr::GetInst()->IncreseExperience(m_fEx);
+	}
+
 }

@@ -10,6 +10,8 @@ public:
 	virtual void Render(HDC _dc);
 	virtual void Upgrade();
 public:
+	WEAPON_TYPE m_wpType;
+public:
 	Player * owner;
 public:
 	vector<Projectile*> vecProjectiles;

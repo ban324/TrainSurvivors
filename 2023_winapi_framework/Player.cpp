@@ -26,7 +26,7 @@ Player::Player()
 	duration(1.f),
 	bulletSize(1.f),
 	coolTimePercent(1.f),
-	maxHP(10),
+	maxHP(500),
 	currentHP(maxHP)
 {
 	dir = Vec2(1, 0);
@@ -70,6 +70,7 @@ Player::Player()
 		burnWheel->SetName(TEXT("BurningWheel"));
 		burnWheel->level = 1;
 		//weapons.push_back(burnWheel);
+		weaponDic.insert({ WEAPON_TYPE::BURNINGWHEEL,burnWheel });
 	}
 	MachineGun* mcg = new MachineGun();
 	if (mcg)
@@ -77,20 +78,22 @@ Player::Player()
 		mcg->bulletSize = 30.f;
 		mcg->cooltime = 1.f;
 		mcg->duration = 10.f;
-		mcg->SetSpeed(10.f);
+		mcg->SetSpeed(100);
 		mcg->projectileCnt = 1;
 		mcg->power = 5.f;
 		mcg->SetPos(GetPos());;
 		mcg->owner = this;
 		mcg->level = 1;
 		mcg->SetName(TEXT("MachineGun"));
+		weaponDic.insert({ WEAPON_TYPE::MACHINEGUN,mcg});
+
 	}
 	Cactus* cactus = new Cactus();
 	if (cactus)
 	{	
 		cactus->bulletSize = 30.f;
-		cactus->cooltime = 1.f;
-		cactus->duration = 10.f;
+		cactus->cooltime = 10.f;
+		cactus->duration = 8.f;
 		cactus->SetSpeed(10.f);
 		cactus->projectileCnt = 1;
 		cactus->power = 5.f;
@@ -98,6 +101,8 @@ Player::Player()
 		cactus->owner = this;
 		cactus->level = 1;
 		cactus->SetName(TEXT("Cactus"));
+		weaponDic.insert({ WEAPON_TYPE::CACTUS,cactus});
+
 	}
 	Turret* turret = new Turret();
 	if (turret)
@@ -105,13 +110,15 @@ Player::Player()
 		turret->bulletSize = 30.f;
 		turret->cooltime = 1.f;
 		turret->duration = 10.f;
-		turret->SetSpeed(10.f);
+		turret->SetSpeed(30.f);
 		turret->projectileCnt = 1;
 		turret->power = 5.f;
 		turret->SetPos(GetPos());;
 		turret->owner = this;
 		turret->SetName(TEXT("Turret"));
 		turret->level = 1;
+		weaponDic.insert({ WEAPON_TYPE::TURRET,turret});
+
 	}	
 	Sprinkler* sprinkler = new Sprinkler();
 	if (sprinkler)
@@ -125,8 +132,14 @@ Player::Player()
 		sprinkler->SetPos(GetPos());;
 		sprinkler->owner = this;
 		sprinkler->SetName(TEXT("Sprinkler"));
-		sprinkler->SetScale(Vec2(50.f, 50.f));
+		sprinkler->SetScale(Vec2(125.f, 125.f));
+		sprinkler->SetPos(GetPos());
 		sprinkler->level = 1;
+		sprinkler->SetTag(TAG::WEAPON);
+		sprinkler->GetCollider()->SetScale(Vec2(125.f, 125.f));
+		SceneMgr::GetInst()->GetCurScene()->AddObject(sprinkler, OBJECT_GROUP::BULLET);
+		weaponDic.insert({ WEAPON_TYPE::SPRINKLER,sprinkler});
+
 		weapons.push_back(sprinkler);
 	}
 	vector<Weapon*> weaponVector = { burnWheel, cactus, turret, mcg };
@@ -181,6 +194,11 @@ void Player::CreateBullet()
 	SceneMgr::GetInst()->GetCurScene()->AddObject(pBullet, OBJECT_GROUP::BULLET);
 }
 
+void Player::AddWeapon(WEAPON_TYPE wpType)
+{
+	weapons.push_back(weaponDic[wpType]);
+}
+
 void Player::Render(HDC _dc)
 {
 	Vec2 vPos = GetPos();
@@ -215,10 +233,7 @@ void Player::Render(HDC _dc)
 	//	, (int)(vPos.y - vScale.y / 2)
 	//	, Width, Height, m_pTex->GetDC()
 	//	, 0, 0, Width, Height, RGB(255, 0, 255));
+
 	Component_Render(_dc);
-	for (auto iter = weapons.begin(); iter != weapons.end(); ++iter)
-	{
-		(*iter)->Render(_dc);
-	}
 
 }

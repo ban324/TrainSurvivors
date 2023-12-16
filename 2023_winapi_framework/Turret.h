@@ -9,6 +9,7 @@ public:
 public:
 	void Update() override;
 	void Render(HDC _dc) override;
+	void Upgrade() override;
 private:
 	Texture* m_projectileTex;
 public:
