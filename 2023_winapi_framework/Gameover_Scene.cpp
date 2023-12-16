@@ -18,10 +18,11 @@ void Gameover_Scene::Init()
 	ResMgr::GetInst()->LoadFont(L"TitleFont", L"Font\\MainFont.ttf", 70);
 	ResMgr::GetInst()->LoadFont(L"SubFont", L"Font\\MainFont.ttf", 30);
 
+	ResMgr::GetInst()->Stop(SOUND_CHANNEL::BGM);
 	// 사운드 세팅
-	ResMgr::GetInst()->LoadSound(L"BGM", L"Sound\\Retro_bgm.wav", true);
-	ResMgr::GetInst()->LoadSound(L"Shoot", L"Sound\\laserShoot.wav", false);
-	ResMgr::GetInst()->Play(L"BGM");
+	ResMgr::GetInst()->Stop(SOUND_CHANNEL::BGM);
+	ResMgr::GetInst()->LoadSound(L"GameOver", L"Sound\\game-die.wav", false);
+	ResMgr::GetInst()->Play(L"GameOver");
 }
 
 void Gameover_Scene::Update()

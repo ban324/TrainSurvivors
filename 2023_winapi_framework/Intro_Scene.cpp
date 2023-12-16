@@ -27,9 +27,8 @@ void Intro_Scene::Init()
 	ResMgr::GetInst()->LoadFont(L"SubFont", L"Font\\MainFont.ttf", 30);
 
 	// 사운드 세팅
-	/*ResMgr::GetInst()->LoadSound(L"BGM", L"Sound\\Retro_bgm.wav", true);
-	ResMgr::GetInst()->LoadSound(L"Shoot", L"Sound\\laserShoot.wav", false);
-	ResMgr::GetInst()->Play(L"BGM");*/
+	ResMgr::GetInst()->LoadSound(L"Intro", L"Sound\\Intro.wav", true);
+	ResMgr::GetInst()->Play(L"Intro");
 
 }
 

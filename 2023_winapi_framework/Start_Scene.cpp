@@ -49,7 +49,8 @@ void Start_Scene::Init()
 	//	AddObject(pMonster, OBJECT_GROUP::MONSTER);
 	//}
 	// 사운드 세팅
-	ResMgr::GetInst()->LoadSound(L"BGM", L"Sound\\Retro_bgm.wav", true);
+	ResMgr::GetInst()->Stop(SOUND_CHANNEL::BGM);
+	ResMgr::GetInst()->LoadSound(L"BGM", L"Sound\\MP_Wastren.wav", true);
 	ResMgr::GetInst()->LoadSound(L"Shoot", L"Sound\\laserShoot.wav", false);
 	ResMgr::GetInst()->Play(L"BGM");
 
