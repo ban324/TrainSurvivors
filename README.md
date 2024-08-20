@@ -6,7 +6,7 @@
 
 좌우로 움직이는 열차를 조작해 생존하는 생존 게임입니다.
 
-
+<img src="ForReadMe/스크린샷Title.png">
 
 </br>
 
